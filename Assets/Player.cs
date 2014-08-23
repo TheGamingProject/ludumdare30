@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public Vector2 speed = new Vector2(3.0f, 2.0f);
 	public Vector2 yBounds = new Vector2(-.45f, -3.45f); 
 
+	public float amountFromCamera = 8.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,13 @@ public class Player : MonoBehaviour {
 		if (xMovement != 0) {
 			nextPosition.x += xMovement * speed.x * Time.deltaTime;
 		}
+
+		if (nextPosition.x < Camera.main.transform.position.x - amountFromCamera) {
+			nextPosition.x = Camera.main.transform.position.x - amountFromCamera;
+		} else if (nextPosition.x > Camera.main.transform.position.x + amountFromCamera) {
+			nextPosition.x = Camera.main.transform.position.x + amountFromCamera;
+		}
+
 
 		if (yMovement != 0) {
 			nextPosition.y += yMovement * speed.y * Time.deltaTime;
