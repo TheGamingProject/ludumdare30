@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour {
 	private Transform player;
 
 	public float speed = 1.2f;
-	public float moveTowardsPlayerRange = 3.0f;
 
 	public int health = 2;
 
@@ -16,6 +15,8 @@ public class Enemy : MonoBehaviour {
 	Material defaultMaterial;
 	public Material getHitMaterial;
 
+	int facing = -1;
+
 	void Start () {
 		foreach (Transform child in transform.parent){
 			if (child.name == "Player"){
@@ -23,35 +24,46 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 
-		myMeshRenderer = transform.GetComponent<MeshRenderer>();
-		defaultMaterial = myMeshRenderer.material;
+		//myMeshRenderer = transform.GetComponent<MeshRenderer>();
+		//defaultMaterial = myMeshRenderer.material;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 nextPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		Vector3 direction = player.position - transform.position;
+		rigidbody2D.AddForceAtPosition(direction.normalized, transform.position);
 
-		if (player.transform.position.x < transform.position.x) {
-			nextPosition.x -= speed * Time.deltaTime;
-		} else if (player.transform.position.x > transform.position.x) {
-			nextPosition.x += speed * Time.deltaTime;
-		}
-
-		if (Vector3.Distance(transform.position, player.position) < moveTowardsPlayerRange) {
-			if (player.transform.position.y < transform.position.y) {
-				nextPosition.y -= speed * Time.deltaTime;
-			} else if (player.transform.position.y > transform.position.y) {
-				nextPosition.y += speed * Time.deltaTime;
-			}
-		}
-
-		transform.position = nextPosition;
+		updateFacing();
 
 		updateCooldown();
 		if  (isCooldownUp()) {
-			myMeshRenderer.material = defaultMaterial;
+	//		myMeshRenderer.material = defaultMaterial;
 			//resetCooldown();
 		}
+	}
+
+	private void updateFacing() {
+		int newFacing = 0;
+		if (rigidbody2D.velocity.x > 0) {
+			newFacing = 1;
+		} else if (rigidbody2D.velocity.x < 0) {
+			newFacing = -1;
+		}
+
+		setFacing(newFacing);
+	}
+
+	private void setFacing(int newDirection) {
+		if (facing == newDirection) return;
+		facing = newDirection;
+		
+		Quaternion v = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+		if (facing == 1) {
+			v.y = 0;
+		} else if (facing == -1) {
+			v.y = 180;
+		}
+		transform.rotation = v;
 	}
 
 	public void getHit(Transform fromWhom, int dmg) {
@@ -60,13 +72,13 @@ public class Enemy : MonoBehaviour {
 		health -= dmg;
 		if (health <= 0) {
 			Destroy(gameObject);
-		} else {
-			GetComponent<Knockbackable>().knockback(fromWhom.position, dmg);
 		}
+		
+		GetComponent<Knockbackable>().knockback(fromWhom.position, dmg);
 
 		//Debug.Log("got hit" + health);
 
-		myMeshRenderer.material = getHitMaterial;
+	//	myMeshRenderer.material = getHitMaterial;
 		resetCooldown();
 	}
 
