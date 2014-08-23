@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 5c3a3cb83a000be42a1778de9b40b641
+guid: 8e9ce8af42c24ba41ad0dc2ee2e8fb20
 TextureImporter:
   fileIDToRecycleName:
-    21300000: heroRun05
+    21300000: heroDead
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

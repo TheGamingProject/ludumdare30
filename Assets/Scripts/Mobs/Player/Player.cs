@@ -85,6 +85,7 @@ public class Player : MonoBehaviour {
 			t.transform.position = pos;
 			//t.parent = transform;
 			basicAttackHitbox.activate();
+			animationController.Play("heroAtk1");
 		}
 
 		transform.position = nextPosition;
