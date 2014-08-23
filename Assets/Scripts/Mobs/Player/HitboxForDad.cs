@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HitboxForDad : MonoBehaviour {
 	public float activeTime = 1.0f;
+	public int dmg = 1;
 	bool activeHitbox = false;
 
 	float activeCooldown;
@@ -34,8 +35,7 @@ public class HitboxForDad : MonoBehaviour {
 
 		Enemy enemyHealth = collider.gameObject.GetComponent<Enemy>();
 		if (enemyHealth != null) {
-						
-			Destroy(enemyHealth.gameObject);
+			enemyHealth.getHit(transform.parent, dmg);
 		}
 	}
 
