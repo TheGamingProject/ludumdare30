@@ -180,16 +180,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc8b7f1bb98284429e58c60d3713019, type: 3}
+  m_Script: {fileID: 11500000, guid: e31a01ca668b34a45a5e7eb7f0e8af48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 3, y: 2.75}
+  speed: {x: 3, y: 2}
   backwardsSpeed: 2
   yBounds: {x: 1, y: -4.48999977}
   amountFromCamera: 8.5
   explosionRelativePosition: {x: .75, y: .5}
   explosionSpawnee: {fileID: 400000, guid: bb0e5bf888358704f9392dfcd4b97aae, type: 2}
-  walking: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,10 +197,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947f09fb2e9ef6a4694ccb7afb8d8fe6, type: 3}
+  m_Script: {fileID: 11500000, guid: fea4e6223d398df479ad4f9924b42fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: .5
+  activeTime: .100000001
+  dmg: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

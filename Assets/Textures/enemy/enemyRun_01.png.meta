@@ -1,6 +1,8 @@
 fileFormatVersion: 2
-guid: bf0399a1805ee4cdcbb0c08a8f7d8edb
+guid: 03d6ecfced638134e9500b8eb66fcf75
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemyRun_01
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

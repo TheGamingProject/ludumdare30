@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -66,8 +67,8 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_LinearDrag: 2
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -93,10 +94,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1dc1c83fbf587347a50a9dafd3a5bdd, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f6ca8e04628914da7f0d225f543867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.20000005
+  moveTowardsPlayerRange: 5
+  health: 2
+  invulnTime: .200000003
+  getHitMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da772b6b2ffd7664b9ea6ceb6756bd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedRatio: 1
+  forceRatio: 250
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

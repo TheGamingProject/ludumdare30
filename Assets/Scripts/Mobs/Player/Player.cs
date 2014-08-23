@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+	int facing = 1;
 
 	public Vector2 speed = new Vector2(3.0f, 2.0f);
 	public float backwardsSpeed = 2.0f;
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour {
 	HitboxForDad basicAttackHitbox;
 	Animator animationController;
 
-	public bool walking = false;
+	bool walking = false;
 
 	// Use this for initialization
 	void Start () {
@@ -34,8 +35,16 @@ public class Player : MonoBehaviour {
 		if (xMovement != 0) {
 			if (xMovement > 0) {
 				nextPosition.x += xMovement * backwardsSpeed * Time.deltaTime;
+
+				if (facing == -1) {
+					setFacing(1);
+				}
 			} else {
 				nextPosition.x += xMovement * speed.x * Time.deltaTime;
+
+				if (facing == 1) {
+					setFacing(-1);
+				}
 			}
 
 			if (!walking) {
@@ -70,7 +79,7 @@ public class Player : MonoBehaviour {
 
 		if (Input.GetButtonDown("Fire1")) {
 			Transform t = Instantiate(explosionSpawnee) as Transform;
-			Vector3 pos = new Vector3(transform.position.x + explosionRelativePosition.x, 
+			Vector3 pos = new Vector3(transform.position.x + explosionRelativePosition.x * facing, 
 			                          transform.position.y + explosionRelativePosition.y, 
 			                          transform.position.z);
 			t.transform.position = pos;
@@ -79,5 +88,18 @@ public class Player : MonoBehaviour {
 		}
 
 		transform.position = nextPosition;
+	}
+
+	void setFacing(int newDirection) {
+		if (facing == newDirection) return;
+		facing = newDirection;
+
+		Quaternion v = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+		if (facing == 1) {
+			v.y = 0;
+		} else if (facing == -1) {
+			v.y = 180;
+		}
+		transform.rotation = v;
 	}
 }
