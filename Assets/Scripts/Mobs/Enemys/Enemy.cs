@@ -4,7 +4,9 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 	private Transform player;
 
-	public float speed = 1.2f;
+	public Vector2 speedRange = new Vector2(10,20);
+	public float fallenSpeed = 1.0f;
+	private float speed;
 
 	public int health = 2;
 
@@ -17,6 +19,8 @@ public class Enemy : MonoBehaviour {
 
 	int facing = -1;
 
+	Animator animationController;
+
 	void Start () {
 		foreach (Transform child in transform.parent){
 			if (child.name == "Player"){
@@ -24,14 +28,16 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 
-		//myMeshRenderer = transform.GetComponent<MeshRenderer>();
-		//defaultMaterial = myMeshRenderer.material;
+		animationController = transform.FindChild("animator").GetComponent<Animator>();
+
+		speed = Random.Range(speedRange.x, speedRange.y);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 direction = player.position - transform.position;
-		rigidbody2D.AddForceAtPosition(direction.normalized, transform.position);
+		float s = falling ? fallenSpeed : speed;
+		rigidbody2D.AddForceAtPosition(direction.normalized * s, transform.position);
 
 		updateFacing();
 
@@ -40,6 +46,8 @@ public class Enemy : MonoBehaviour {
 	//		myMeshRenderer.material = defaultMaterial;
 			//resetCooldown();
 		}
+
+		updateFalling();
 	}
 
 	private void updateFacing() {
@@ -66,15 +74,37 @@ public class Enemy : MonoBehaviour {
 		transform.rotation = v;
 	}
 
+	private bool falling = false;
+	private void updateFalling () {
+		Vector2 target = new Vector2(player.position.x, player.position.y);
+		// if velocity is not towards player, dont reset animation
+		if (falling) {
+			Debug.Log(rigidbody2D.velocity.x + " " + rigidbody2D.velocity.y);
+			//Debug.Log(rv.ToString());
+		}
+		if (falling && !isInvunUp() && findIfImMovingTowardsTarget(rigidbody2D.velocity, 
+               new Vector2(transform.position.x, transform.position.y),
+           		target)) {
+			animationController.SetTrigger("knockbackEnds");
+			falling = false;
+		}
+	}
+
+	private void startFalling (Transform fromWhom, int dmg) {
+		GetComponent<Knockbackable>().knockback(fromWhom.position, dmg);
+		falling = true;
+		animationController.SetTrigger("knockbackStarts");
+	}
+
 	public void getHit(Transform fromWhom, int dmg) {
-		if (!isCooldownUp()) return;
+		if (isInvunUp()) return;
 
 		health -= dmg;
 		if (health <= 0) {
 			Destroy(gameObject);
 		}
 		
-		GetComponent<Knockbackable>().knockback(fromWhom.position, dmg);
+		startFalling(fromWhom, dmg);
 
 		//Debug.Log("got hit" + health);
 
@@ -90,5 +120,20 @@ public class Enemy : MonoBehaviour {
 	}
 	void resetCooldown () {
 		invulnCooldown = invulnTime;
+	}
+
+	bool isInvunUp() { 
+		return !isCooldownUp();
+	}
+
+	bool findIfImMovingTowardsTarget( Vector2 myVelocity, Vector2 myPosition, Vector2 myTargetPosition) {
+		Debug.Log(myVelocity.x + " " +  myPosition.x + " " + myTargetPosition.x);
+		if (
+			((Mathf.Sign(myVelocity.x) == -1 && myPosition.x >=myTargetPosition.x) || (Mathf.Sign(myVelocity.x) == 1 && myPosition.x <= myTargetPosition.x)) //&&
+			//((Mathf.Sign(myVelocity.y) == -1 && myPosition.y >= myTargetPosition.y) || (Mathf.Sign(myVelocity.y) == 1 && myPosition.y <= myTargetPosition.y))
+			) {
+			return true;
+		}
+		return false;
 	}
 }

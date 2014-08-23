@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f6ca8e04628914da7f0d225f543867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speedRange: {x: 5, y: 10}
+  fallenSpeed: 1
   health: 2
   invulnTime: .200000003
   getHitMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
