@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HitboxForDad : MonoBehaviour {
 	public float activeTime = 1.0f;
-	bool active = false;
+	bool activeHitbox = false;
 
 	float activeCooldown;
 
@@ -14,26 +14,23 @@ public class HitboxForDad : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (active) {
+		if (activeHitbox) {
 			activeCooldown -= Time.deltaTime;
 
 			if (activeCooldown <= 0) {
-				active = false;
+				activeHitbox = false;
 			}
 		}
 
 	}
 
 	public void activate () {
-		active = true;
+		activeHitbox = true;
 		activeCooldown = activeTime;
 	}
 
 	void OnTriggerStay2D(Collider2D collider) {
-		Debug.Log("hello");
-		if (!active) return;
-
-		Debug.Log("active bro");
+		if (!activeHitbox) return;
 
 		Enemy enemyHealth = collider.gameObject.GetComponent<Enemy>();
 		if (enemyHealth != null) {

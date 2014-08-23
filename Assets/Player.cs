@@ -13,10 +13,14 @@ public class Player : MonoBehaviour {
 	public Transform explosionSpawnee;
 
 	HitboxForDad basicAttackHitbox;
+	Animator animationController;
+
+	public bool walking = false;
 
 	// Use this for initialization
 	void Start () {
 		basicAttackHitbox = GameObject.Find("basicAttackHitArea").GetComponent<HitboxForDad>();
+		animationController = transform.FindChild("animator").GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -33,6 +37,16 @@ public class Player : MonoBehaviour {
 			} else {
 				nextPosition.x += xMovement * speed.x * Time.deltaTime;
 			}
+
+			if (!walking) {
+				animationController.SetTrigger("startRunning");
+			}
+			walking = true;
+		} else {
+			if (walking) {
+				animationController.SetTrigger("stopRunning");
+			}
+			walking = false;
 		}
 
 		if (nextPosition.x < Camera.main.transform.position.x - amountFromCamera) {
