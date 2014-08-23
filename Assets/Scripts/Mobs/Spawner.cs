@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour {
 	public Vector2 spawnTimeRange = new Vector2(1.0f, 3.0f);
 	float spawnCooldown; 
 
+	public Vector2 spawnAmountRange = new Vector2(1.0f,4.0f);
+
 	public Transform spawnee;
 
 	void Start () {
@@ -18,8 +20,15 @@ public class Spawner : MonoBehaviour {
 		updateCooldown();
 
 		if (isCooldownUp()) {
-			spawnSpawnee();
+			spawn();
 			resetCooldown();
+		}
+	}
+
+	void spawn () {
+		int spawnAmount = Random.Range((int)spawnAmountRange.x, (int)spawnAmountRange.y);
+		for (int i=0; i < spawnAmount; i++) {
+			spawnSpawnee();
 		}
 	}
 
