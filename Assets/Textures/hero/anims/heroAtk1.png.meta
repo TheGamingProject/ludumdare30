@@ -1,15 +1,6 @@
 fileFormatVersion: 2
-guid: 2217795b8441d494bacb845632d754f6
+guid: 30de828bfc0bf49bd834688a4d9ac1f4
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: heroRun_01
-    21300002: heroRun_01_0
-    21300004: heroRun_01_1
-    21300006: heroRun_01_2
-    21300008: heroRun_01_3
-    21300010: heroRun_01_4
-    21300012: heroRun_01_5
-    21300014: heroRun_01_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,74 +42,74 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: heroRun_01_0
+    - name: heroAtk1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_1
+    - name: heroAtk1_1
       rect:
         serializedVersion: 2
         x: 50
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_2
+    - name: heroAtk1_2
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_3
+    - name: heroAtk1_3
       rect:
         serializedVersion: 2
         x: 150
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_4
+    - name: heroAtk1_4
       rect:
         serializedVersion: 2
         x: 200
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_5
+    - name: heroAtk1_5
       rect:
         serializedVersion: 2
         x: 250
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: heroRun_01_6
+    - name: heroAtk1_6
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 50
         height: 50
-      alignment: 0
+      alignment: 4
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
