@@ -168,7 +168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1788408405}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1001 &518268571
 Prefab:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 746497318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.02655602, y: -4.69882584, z: 0}
+  m_LocalPosition: {x: -10.3299999, y: -4.69999981, z: 0}
   m_LocalScale: {x: 1.56669736, y: 1.5666889, z: 1}
   m_Children: []
   m_Father: {fileID: 1188271983}
@@ -383,7 +383,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 767943721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.7036114, y: -4.66808748, z: 0}
+  m_LocalPosition: {x: 7.42999983, y: -4.69999981, z: 0}
   m_LocalScale: {x: 1.566697, y: 1.56668901, z: 1}
   m_Children: []
   m_Father: {fileID: 1188271983}
@@ -438,7 +438,7 @@ Transform:
   m_Children:
   - {fileID: 1018535083}
   m_Father: {fileID: 1788408405}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &915579228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,8 +633,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f836ba380a0ba9e408709d2c2741a1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duplicatesAmount: 100
-  offsetConstant: -5
+  duplicatesAmount: 50
+  offsetConstant: -10.5
+--- !u!1 &1377932311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1377932312}
+  - 114: {fileID: 1377932313}
+  m_Layer: 0
+  m_Name: 0 - Skybox Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1377932312
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377932311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1788408405}
+  m_RootOrder: 0
+--- !u!114 &1377932313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377932311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0d090901ee65948b07b6f523c6407d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marsSkybox: {fileID: 21300000, guid: 4f0a96e6952674591af3d5a769fbf7d8, type: 3}
+  mercurySkybox: {fileID: 21300000, guid: fcaa6313d868b4aeb80cb6627d522278, type: 3}
+  jupiterSkybox: {fileID: 21300000, guid: e6556193b72864b80b4ab520aae03cac, type: 3}
+  neptuneSkybox: {fileID: 21300000, guid: 787f152a2a2d047f7ba6c3822b1fb722, type: 3}
+  saturnSkybox: {fileID: 21300000, guid: cb5f77c32002848e9a7724a16030916b, type: 3}
+  planetOffset: {x: 0, y: 0}
+  planetsSkyboxXSpeed: -1
 --- !u!1 &1378900888
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +709,7 @@ Transform:
   - {fileID: 1188271983}
   - {fileID: 1862994197}
   m_Father: {fileID: 1788408405}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1655687410
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +733,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655687410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.4000015, y: -4.66808796, z: 0}
+  m_LocalPosition: {x: 25.2199993, y: -4.69999981, z: 0}
   m_LocalScale: {x: 1.566697, y: 1.56668901, z: 1}
   m_Children: []
   m_Father: {fileID: 1188271983}
@@ -739,6 +785,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1377932312}
   - {fileID: 1378900889}
   - {fileID: 423266619}
   - {fileID: 915579227}
