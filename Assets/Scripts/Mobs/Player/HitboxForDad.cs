@@ -34,10 +34,22 @@ public class HitboxForDad : MonoBehaviour {
 		if (!activeHitbox) return;
 
 		Enemy enemyHealth = collider.gameObject.GetComponent<Enemy>();
-		if (enemyHealth != null) {
+		if (enemyHealth != null && !amIAnEnemy()) {
 			enemyHealth.getHit(transform.parent, dmg);
+		}
+
+		Player player = collider.gameObject.GetComponent<Player>();
+		if (player  != null) {
+			player.getHit(transform.parent, dmg);
 		}
 	}
 
+
+	bool amIAnEnemy () {
+		if (transform.parent.GetComponent<Enemy>() != null) {
+			return true;
+		}
+		return false;
+	}
 
 }

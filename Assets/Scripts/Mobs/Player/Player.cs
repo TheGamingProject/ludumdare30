@@ -103,4 +103,8 @@ public class Player : MonoBehaviour {
 		}
 		transform.rotation = v;
 	}
+
+	public void getHit(Transform fromWhom, int dmg) {
+		Debug.Log("got hit");
+	}
 }

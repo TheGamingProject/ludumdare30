@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour {
 
 	public float invulnTime = 1.0f;
 	float invulnCooldown = 0.0f;
+	
+	HitboxForDad basicAttackHitbox;
 
 	MeshRenderer myMeshRenderer;
 	Material defaultMaterial;
@@ -21,6 +23,10 @@ public class Enemy : MonoBehaviour {
 
 	Animator animationController;
 
+	public float attackCooldownTime = 2.0f;
+	Cooldown attackCooldown;
+	public float attackRange = 2.0f;
+
 	void Start () {
 		foreach (Transform child in transform.parent){
 			if (child.name == "Player"){
@@ -29,8 +35,11 @@ public class Enemy : MonoBehaviour {
 		}
 
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
+		basicAttackHitbox = transform.FindChild("basicAttackBounds").GetComponent<HitboxForDad>();
 
 		speed = Random.Range(speedRange.x, speedRange.y);
+
+		attackCooldown = new Cooldown(attackCooldownTime);
 	}
 	
 	// Update is called once per frame
@@ -48,6 +57,11 @@ public class Enemy : MonoBehaviour {
 		}
 
 		updateFalling();
+
+		attackCooldown.updateCooldown();
+		if (attackCooldown.isCooldownUp() && isCloseEnoughToAttack()) {
+			attack();
+		}
 	}
 
 	private void updateFacing() {
@@ -78,10 +92,6 @@ public class Enemy : MonoBehaviour {
 	private void updateFalling () {
 		Vector2 target = new Vector2(player.position.x, player.position.y);
 		// if velocity is not towards player, dont reset animation
-		if (falling) {
-			Debug.Log(rigidbody2D.velocity.x + " " + rigidbody2D.velocity.y);
-			//Debug.Log(rv.ToString());
-		}
 		if (falling && !isInvunUp() && findIfImMovingTowardsTarget(rigidbody2D.velocity, 
                new Vector2(transform.position.x, transform.position.y),
            		target)) {
@@ -126,8 +136,19 @@ public class Enemy : MonoBehaviour {
 		return !isCooldownUp();
 	}
 
+	void attack() {
+//		Debug.Log("Attack!");
+		basicAttackHitbox.activate();
+		animationController.SetTrigger("startAttack");
+	}
+
+	bool isCloseEnoughToAttack () {
+		return Vector2.Distance(new Vector2(transform.position.x, transform.position.y), 
+		                        new Vector2(player.position.x, player.position.y)) < attackRange;
+	}
+
 	bool findIfImMovingTowardsTarget( Vector2 myVelocity, Vector2 myPosition, Vector2 myTargetPosition) {
-		Debug.Log(myVelocity.x + " " +  myPosition.x + " " + myTargetPosition.x);
+	//	Debug.Log(myVelocity.x + " " +  myPosition.x + " " + myTargetPosition.x);
 		if (
 			((Mathf.Sign(myVelocity.x) == -1 && myPosition.x >=myTargetPosition.x) || (Mathf.Sign(myVelocity.x) == 1 && myPosition.x <= myTargetPosition.x)) //&&
 			//((Mathf.Sign(myVelocity.y) == -1 && myPosition.y >= myTargetPosition.y) || (Mathf.Sign(myVelocity.y) == 1 && myPosition.y <= myTargetPosition.y))
