@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 382c59c415342474497ecfedf8cc8ed0
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemyAtk_0
+    21300002: enemyAtk_1
+    21300004: enemyAtk_2
+    21300006: enemyAtk_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -1,6 +1,8 @@
 fileFormatVersion: 2
-guid: fa49d6fbdaf734e73abedc072f749199
+guid: a66093dbd5b62e64f92c3403ee102655
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemyDead
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
