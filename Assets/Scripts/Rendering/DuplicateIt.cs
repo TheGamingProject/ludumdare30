@@ -39,7 +39,7 @@ public class DuplicateIt : MonoBehaviour
 		for (int i = 0; i <= duplicatesAmount; i++) {
 			for (int bg = 0; bg < backgroundPart.Count; bg++) {
 				Transform bgPart = backgroundPart[bg];
-				Vector3 pos = new Vector3(i* totalXLength + bg * individualBgSize.x, bgPart.position.y, bgPart.transform.position.z);
+				Vector3 pos = new Vector3((1+i)* totalXLength + bg * individualBgSize.x, bgPart.position.y, bgPart.transform.position.z);
 				Transform newBg = Instantiate(bgPart, Vector3.zero, Quaternion.identity) as Transform;
 				newBg.parent = transform;
 				newBg.localScale = bgPart.localScale;
