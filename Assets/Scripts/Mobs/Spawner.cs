@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour {
 		Transform t = Instantiate(spawnee) as Transform;
 		float xSpawn = Camera.main.transform.position.x + xFromCamera;
 		float ySpawn = Random.Range(ySpawnRange.x, ySpawnRange.y);
-		t.position = new Vector3(xSpawn, ySpawn, 0);
+		t.position = new Vector3(xSpawn, ySpawn, transform.position.z);
 		t.parent = transform;
 		//t.localScale = transform.localScale;
 			

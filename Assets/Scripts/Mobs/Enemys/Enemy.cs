@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
 
 	Animator animationController;
 
-	public float attackCooldownTime = 2.0f;
+	public Vector2 attackCooldownTimeRange = new Vector2(1.0f, 1.2f);
 	Cooldown attackCooldown;
 	public float attackRange = 2.0f;
 
@@ -39,14 +39,11 @@ public class Enemy : MonoBehaviour {
 
 		speed = Random.Range(speedRange.x, speedRange.y);
 
-		attackCooldown = new Cooldown(attackCooldownTime);
+		attackCooldown = new Cooldown(attackCooldownTimeRange);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		Vector3 direction = player.position - transform.position;
-		float s = falling ? fallenSpeed : speed;
-		rigidbody2D.AddForceAtPosition(direction.normalized * s, transform.position);
 
 		updateFacing();
 
@@ -58,10 +55,25 @@ public class Enemy : MonoBehaviour {
 
 		updateFalling();
 
+		bool isCloseEnough = isCloseEnoughToAttack();
 		attackCooldown.updateCooldown();
-		if (attackCooldown.isCooldownUp() && isCloseEnoughToAttack()) {
-			attack();
+
+		if (isCloseEnough) {
+			animationController.SetBool("idleAfterAttack", true);
+
+			if (attackCooldown.isCooldownUp()) {
+				attack();
+			}
+		} else {
+			animationController.SetBool("idleAfterAttack", false);
+			moveCloserToTarget();
 		}
+	}
+
+	private void moveCloserToTarget() {
+		Vector3 direction = player.position - transform.position;
+		float s = falling ? fallenSpeed : speed;
+		rigidbody2D.AddForceAtPosition(direction.normalized * s, transform.position);
 	}
 
 	private void updateFacing() {
@@ -137,9 +149,10 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void attack() {
-//		Debug.Log("Attack!");
+		Debug.Log("Attack!");
 		basicAttackHitbox.activate();
 		animationController.SetTrigger("startAttack");
+		attackCooldown.resetCooldown();
 	}
 
 	bool isCloseEnoughToAttack () {

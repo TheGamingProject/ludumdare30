@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.10656857, y: -1.74823499, z: -2}
+  m_LocalPosition: {x: -2.10272932, y: -2.09552622, z: -3}
   m_LocalScale: {x: 1.70000005, y: 1.70000005, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -126,8 +126,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: .53211832, y: .404471755}
-  m_Center: {x: .262333483, y: .176453158}
+  m_Size: {x: .780715048, y: .705801129}
+  m_Center: {x: .386632025, y: .327117831}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -159,8 +159,8 @@ MonoBehaviour:
   health: 2
   invulnTime: .200000003
   getHitMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  attackCooldownTime: 2
-  attackRange: 1.5
+  attackCooldownTimeRange: {x: 1, y: 1.20000005}
+  attackRange: 1.20000005
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea4e6223d398df479ad4f9924b42fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: .200000003
+  activeTime: .75
   dmg: 1
 --- !u!212 &21200000
 SpriteRenderer:

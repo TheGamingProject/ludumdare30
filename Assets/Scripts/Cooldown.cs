@@ -28,5 +28,8 @@ public class Cooldown {
 			currentCooldownTimeLeft = Random.Range(totalCooldownTimeRange.x, totalCooldownTimeRange.y);
 		}
 	}
+	public float getTimeLeft () {
+		return currentCooldownTimeLeft;
+	}
 }
 

@@ -31,19 +31,33 @@ public class HitboxForDad : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D collider) {
-		if (!activeHitbox) return;
-
-		Enemy enemyHealth = collider.gameObject.GetComponent<Enemy>();
-		if (enemyHealth != null && !amIAnEnemy()) {
-			enemyHealth.getHit(transform.parent, dmg);
-		}
-
-		Player player = collider.gameObject.GetComponent<Player>();
-		if (player  != null) {
-			player.getHit(transform.parent, dmg);
-		}
+		onTrigger(collider);
 	}
 
+	void OnTriggerEnter2D(Collider2D collider) {
+		onTrigger(collider);
+	}
+
+	void OnTriggerExit2D(Collider2D collider) {
+		onTrigger(collider);
+	}
+
+	void onTrigger(Collider2D collider) {
+		if (!activeHitbox) return;
+		
+		Enemy enemyHealth = collider.gameObject.GetComponent<Enemy>();
+		if (enemyHealth != null && !amIAnEnemy()) {
+			Debug.Log("enemy");
+			enemyHealth.getHit(transform.parent, dmg);
+		}
+		
+		Player player = collider.gameObject.GetComponent<Player>();
+		if (player  != null) {
+//			Debug.Log("player");
+			player.getHit(transform.parent, dmg);
+		}
+
+	}
 
 	bool amIAnEnemy () {
 		if (transform.parent.GetComponent<Enemy>() != null) {

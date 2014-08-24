@@ -18,10 +18,17 @@ public class Player : MonoBehaviour {
 
 	bool walking = false;
 
+	public int health = 10;
+	public float invulnTime = .5f;
+	Cooldown invunlnCooldown;
+	public Transform bubblePrefab;
+
 	// Use this for initialization
 	void Start () {
 		basicAttackHitbox = GameObject.Find("basicAttackHitArea").GetComponent<HitboxForDad>();
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
+
+		invunlnCooldown = new Cooldown(invulnTime);
 	}
 	
 	// Update is called once per frame
@@ -88,6 +95,8 @@ public class Player : MonoBehaviour {
 			animationController.Play("heroAtk1");
 		}
 
+		invunlnCooldown.updateCooldown();
+
 		transform.position = nextPosition;
 	}
 
@@ -105,6 +114,29 @@ public class Player : MonoBehaviour {
 	}
 
 	public void getHit(Transform fromWhom, int dmg) {
-		Debug.Log("got hit");
+		if (invunlnCooldown.isCooldownUp()) {
+			health -= dmg;
+			Debug.Log("got hit" + health);
+			if (health <= 0) {
+				die();
+			} else {
+				autoInvun();
+			}
+		} else {
+			Debug.Log("IM INVINCIBLE"  + health);
+		}
+
+	}
+
+	void autoInvun() {
+		Transform t = Instantiate(bubblePrefab) as Transform;
+		t.position = transform.position;
+		t.parent = transform;
+		invunlnCooldown.resetCooldown();
+	}
+
+	void die() {
+		//Destroy(gameObject);
+		Application.LoadLevel("menu");
 	}
 }
