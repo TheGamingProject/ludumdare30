@@ -17,11 +17,11 @@ public class Menu : MonoBehaviour {
 		    GUI.Button(
 			new Rect(
 			0,
-			(1 * Screen.height / 3) - 100,
-			Screen.width,
-			200
+			120,
+			400,
+			60
 			),
-			"press to play"
+			"C L I C K  T O  S T A R T"
 			) 
 		    ) 
 		{
