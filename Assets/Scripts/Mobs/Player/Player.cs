@@ -85,11 +85,11 @@ public class Player : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown("Fire1")) {
-			Transform t = Instantiate(explosionSpawnee) as Transform;
+			/*Transform t = Instantiate(explosionSpawnee) as Transform;
 			Vector3 pos = new Vector3(transform.position.x + explosionRelativePosition.x * facing, 
 			                          transform.position.y + explosionRelativePosition.y, 
 			                          transform.position.z);
-			t.transform.position = pos;
+			t.transform.position = pos;*/
 			//t.parent = transform;
 			basicAttackHitbox.activate();
 			animationController.Play("heroAtk1");

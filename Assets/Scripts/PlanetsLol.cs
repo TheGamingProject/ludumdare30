@@ -30,7 +30,8 @@ public class PlanetsLol : MonoBehaviour {
 	List<Transform> symbols = new List<Transform>();
 
 	public enum planets {
-		mars, mercury, jupiter, neptune, saturn
+		mars, mercury, jupiter, neptune, saturn,
+		none
 	}
 	
 	List<planets> planetOrder = new List<planets>();
@@ -38,9 +39,9 @@ public class PlanetsLol : MonoBehaviour {
 	void Start () {
 		symbolParent = GameObject.Find("2 - Middleground").transform.FindChild("symbols");
 
-		currentPlanet = getRandomPlanet();
-		addSkybox(currentPlanet, currentPlanetNumber);
-		addSymbol(currentPlanet, currentPlanetNumber);
+		currentPlanet = planets.none;
+		//addSkybox(currentPlanet, currentPlanetNumber);
+		//addSymbol(currentPlanet, currentPlanetNumber);
 
 		addNextPlanetStuff();
 		addNextPlanetStuff();
@@ -121,7 +122,7 @@ public class PlanetsLol : MonoBehaviour {
 		go.transform.localScale = localScale;
 
 		skyboxSize = (go.renderer.bounds.max - go.renderer.bounds.min);
-		Vector3 position = new Vector3(skyboxOffset.x - (number) * skyboxSize.x, skyboxOffset.y, transform.position.z);
+		Vector3 position = new Vector3(skyboxOffset.x - (number - 1) * skyboxSize.x, skyboxOffset.y, transform.position.z);
 		go.transform.position = position;
 
 		skyboxes.Add(go.transform);
@@ -156,7 +157,7 @@ public class PlanetsLol : MonoBehaviour {
 		Vector3 localScale = new Vector3(1.7f, 1.7f, 1.0f);
 		go.transform.localScale = localScale;
 
-		Vector3 position = new Vector3(symbolOffset.x + (number) * symbolGap, symbolOffset.y, symbolParent.position.z);
+		Vector3 position = new Vector3(symbolOffset.x + (number - 1) * symbolGap, symbolOffset.y, symbolParent.position.z);
 		go.transform.position = position;
 
 		symbols.Add(go.transform);
