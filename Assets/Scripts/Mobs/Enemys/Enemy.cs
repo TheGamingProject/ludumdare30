@@ -149,7 +149,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void attack() {
-		Debug.Log("Attack!");
+		//Debug.Log("Attack!");
 		basicAttackHitbox.activate();
 		animationController.SetTrigger("startAttack");
 		attackCooldown.resetCooldown();

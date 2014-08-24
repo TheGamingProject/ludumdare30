@@ -123,7 +123,7 @@ public class Player : MonoBehaviour {
 				autoInvun();
 			}
 		} else {
-			Debug.Log("IM INVINCIBLE"  + health);
+//			Debug.Log("IM INVINCIBLE"  + health);
 		}
 
 	}

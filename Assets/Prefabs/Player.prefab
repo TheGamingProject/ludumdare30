@@ -159,8 +159,8 @@ MonoBehaviour:
   amountFromCamera: 8.5
   explosionRelativePosition: {x: .75, y: .5}
   explosionSpawnee: {fileID: 400000, guid: bb0e5bf888358704f9392dfcd4b97aae, type: 2}
-  health: 10
-  invulnTime: .5
+  health: 100
+  invulnTime: .75
   bubblePrefab: {fileID: 400000, guid: e4fbbcaf94872c44a860049d85d48832, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
