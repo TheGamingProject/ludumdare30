@@ -132,9 +132,7 @@ public class PlanetsLol : MonoBehaviour {
 
 		skyboxSize = (go.renderer.bounds.max - go.renderer.bounds.min);
 		Vector3 position = new Vector3(skyboxOffset.x - (number - 1) * skyboxGap, skyboxOffset.y, transform.position.z);
-		Debug.Log(number);
 		go.transform.position = position;
-		Debug.Log(go.transform.position);
 
 		skyboxes.Add(go.transform);
 	}

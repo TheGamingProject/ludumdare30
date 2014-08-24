@@ -20,6 +20,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: running
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: attacking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -45,11 +57,11 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: stopRunning
+    m_ConditionEvent: 
     m_EventTreshold: 0
-    m_ExitTime: 1
+    m_ExitTime: .600000024
   - m_ConditionMode: 1
-    m_ConditionEvent: startRunning
+    m_ConditionEvent: running
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -69,7 +81,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: running
     m_EventTreshold: 0
     m_ExitTime: .75
   m_Atomic: 1
@@ -88,14 +100,14 @@ Transition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: running
+    m_EventTreshold: 0
+    m_ExitTime: 0
   - m_ConditionMode: 5
-    m_ConditionEvent: stopRunning
+    m_ConditionEvent: running
     m_EventTreshold: 0
-    m_ExitTime: 1
-  - m_ConditionMode: 1
-    m_ConditionEvent: stopRunning
-    m_EventTreshold: 0
-    m_ExitTime: 1
+    m_ExitTime: .800000012
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -113,7 +125,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: running
     m_EventTreshold: 0
     m_ExitTime: .75
   m_Atomic: 1
@@ -161,7 +173,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: d2fa8077dd8f9425a9c626d4697349cc, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 528, y: -12, z: 0}
+  m_Position: {x: 528, y: 12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -213,13 +225,8 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110240973}
-      second:
-      - {fileID: 110169891}
-    data:
-      first: {fileID: 110243293}
-      second:
-      - {fileID: 110112753}
+      first: {fileID: 0}
+      second: []
     data:
       first: {fileID: 110228016}
       second:
@@ -228,6 +235,17 @@ StateMachine:
       first: {fileID: 110200000}
       second:
       - {fileID: 110165026}
+    data:
+      first: {fileID: 110243293}
+      second:
+      - {fileID: 110112753}
+    data:
+      first: {fileID: 110240973}
+      second:
+      - {fileID: 110169891}
+    data:
+      first: {fileID: 110267344}
+      second: []
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: -108, y: -84, z: 0}
+  m_AnyStatePosition: {x: -96, y: -96, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

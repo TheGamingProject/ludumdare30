@@ -64,4 +64,8 @@ public class HitboxForDad : MonoBehaviour {
 		return false;
 	}
 
+	public bool isActive () {
+		return activeHitbox;
+	}
+
 }
