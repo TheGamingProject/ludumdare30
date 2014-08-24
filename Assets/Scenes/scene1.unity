@@ -785,7 +785,8 @@ MonoBehaviour:
   saturnSymbol: {fileID: 21300000, guid: ffe09b45f732dd943b6829c8403873ad, type: 3}
   skyboxOffset: {x: 0, y: 0}
   symbolOffset: {x: 7.42999983, y: 2.56999993}
-  symbolGap: 17.7999992
+  skyboxGap: 34
+  symbolGap: 17.75
   planetsSkyboxXSpeed: 1
 --- !u!1 &1378900888
 GameObject:

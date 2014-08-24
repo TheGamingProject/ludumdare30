@@ -17,6 +17,7 @@ public class PlanetsLol : MonoBehaviour {
 
 	public Vector2 skyboxOffset = new Vector2();
 	public Vector2 symbolOffset = new Vector2(6.0f, 2.0f);
+	public float skyboxGap = 35.00f;
 	public float symbolGap = 17.88f;
 
 	private Transform symbolParent;
@@ -43,6 +44,14 @@ public class PlanetsLol : MonoBehaviour {
 		//addSkybox(currentPlanet, currentPlanetNumber);
 		//addSymbol(currentPlanet, currentPlanetNumber);
 
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
+		addNextPlanetStuff();
 		addNextPlanetStuff();
 		addNextPlanetStuff();
 
@@ -122,8 +131,10 @@ public class PlanetsLol : MonoBehaviour {
 		go.transform.localScale = localScale;
 
 		skyboxSize = (go.renderer.bounds.max - go.renderer.bounds.min);
-		Vector3 position = new Vector3(skyboxOffset.x - (number - 1) * skyboxSize.x, skyboxOffset.y, transform.position.z);
+		Vector3 position = new Vector3(skyboxOffset.x - (number - 1) * skyboxGap, skyboxOffset.y, transform.position.z);
+		Debug.Log(number);
 		go.transform.position = position;
+		Debug.Log(go.transform.position);
 
 		skyboxes.Add(go.transform);
 	}
