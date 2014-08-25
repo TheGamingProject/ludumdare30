@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: d651f46f85c6a451492851510f31290e
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: bossAtk_0
+    21300002: bossAtk_1
+    21300004: bossAtk_2
+    21300006: bossAtk_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

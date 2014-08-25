@@ -54,6 +54,7 @@ public class PlayerControls : MonoBehaviour {
 	public Vector2 marsProjectionOffset = new Vector2(2f, 0f);
 
 	private PlanetController planetMaster;
+	private HashAudioScript myAudio;
 
 	enum states {
 		idle, running, atk1, atk2
@@ -65,6 +66,7 @@ public class PlayerControls : MonoBehaviour {
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 		jupiterAttack = transform.FindChild("jupiterAttack").GetComponent<JupiterAttack>();
 		planetMaster = Camera.main.GetComponent<PlanetController>();
+		myAudio = GetComponent<HashAudioScript>();
 
 		power1ingCooldown = new Cooldown(power1ingInvunTime);
 
@@ -113,7 +115,17 @@ public class PlayerControls : MonoBehaviour {
 		} else {
 			animationController.Play("heroAtk2");
 		}
-
+		// sound
+		r = Random.Range(0,3);
+		switch (r) {
+		case 0: 
+			myAudio.PlayAudio("KFX1"); break;
+		case 1:
+			myAudio.PlayAudio("KFX2"); break;
+		case 2:
+			myAudio.PlayAudio("KFX3"); break;
+		}
+		// move
 		float xSpeed = (Input.GetAxis("Horizontal") >= 0 ? attackPushForce : -attackPushForce);
 		Vector2 position = new Vector2(xSpeed, 0);
 		rigidbody2D.AddRelativeForce(position, ForceMode2D.Impulse);

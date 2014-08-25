@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: b7db4ab213fc045e89e673892eef9050
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: bossWalk_0
+    21300002: bossWalk_1
+    21300004: bossWalk_2
+    21300006: bossWalk_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

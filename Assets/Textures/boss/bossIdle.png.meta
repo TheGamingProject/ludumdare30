@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 93648b1b4dbb04db1b61a540a194bf76
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: bossIdle_0
+    21300002: bossIdle_1
+    21300004: bossIdle_2
+    21300006: bossIdle_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
