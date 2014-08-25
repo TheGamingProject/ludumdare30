@@ -67,7 +67,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	void continuePlz () {
-		Application.LoadLevel("startmenu");
+		Application.LoadLevel("scene1");
 	}
 
 	void setColor (float hValue) {
