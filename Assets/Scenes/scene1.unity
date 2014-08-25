@@ -147,11 +147,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
       propertyPath: enemysFirstHit
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
       propertyPath: dmg
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: speed.x
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
@@ -225,7 +229,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &296694481
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,10 +677,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xFromCamera: 10
   ySpawnRange: {x: -5, y: 1.5}
-  spawnTimeRange: {x: 1, y: 4}
-  spawnAmountRange: {x: 2, y: 5}
+  spawnTimeRange: {x: .100000001, y: 1}
+  spawnAmountRange: {x: 1, y: 2}
   spawnee: {fileID: 400000, guid: 1540d054b5bcd99439eadbeb645d9ca9, type: 2}
-  extraPerSecondsRatio: .100000001
+  extraPerSecondsRatio: .0399999991
 --- !u!1 &1018535079
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77f07473dca09b4abe1a1ad36d32403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1600, y: 1300}
+  speed: {x: 1500, y: 1300}
   backwardsSpeed: 2000
   xBounds: {x: -10, y: 10}
   yBounds: {x: 2, y: -4.5}
@@ -1471,5 +1474,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 3
-  enemysFirstHit: 3
+  enemysFirstHit: 6
   lightningPrefab: {fileID: 400000, guid: 9e24f9236357ce54a9671875eacc72fc, type: 2}
