@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour {
 	void Start() {
 		continueCooldown = new Cooldown(lockTime);
 		overlayRenderer = transform.FindChild("overlay").GetComponent<SpriteRenderer>();
+		Time.timeScale = 1.0f;
 	}
 
 	private float counter = 0;
@@ -67,6 +68,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	void continuePlz () {
+		GetComponent<HashAudioScript>().PlayAudio("start");
 		Application.LoadLevel("scene1");
 	}
 

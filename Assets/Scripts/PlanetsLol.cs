@@ -85,7 +85,7 @@ public class PlanetsLol : MonoBehaviour {
 	}
 
 	planets getRandomPlanet () {
-		switch (Random.Range(0,4)) {
+		switch (Random.Range(0,5)) {
 		case 0:
 			return planets.jupiter;
 		case 1:
