@@ -181,4 +181,8 @@ public class Enemy : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public bool isDead() {
+		return death;
+	}
 }

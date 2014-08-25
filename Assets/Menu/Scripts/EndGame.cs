@@ -6,7 +6,7 @@ public class EndGame : MonoBehaviour {
 	// Use this for initialization
 	public GUISkin menu;
 
-	public float killCount;.
+	public float killCount;
 
 
 	

@@ -70,6 +70,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400008}
+  - 58: {fileID: 5800002}
+  - 114: {fileID: 11400008}
+  m_Layer: 0
+  m_Name: jupiterAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -83,6 +100,7 @@ Transform:
   - {fileID: 400002}
   - {fileID: 400004}
   - {fileID: 400006}
+  - {fileID: 400008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400002
@@ -121,6 +139,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 2
+--- !u!4 &400008
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_RootOrder: 3
 --- !u!50 &5000000
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -128,7 +158,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 500
-  m_LinearDrag: 3
+  m_LinearDrag: 2.5
   m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_FixedAngle: 1
@@ -146,6 +176,17 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: 2
+  m_Center: {x: 0, y: 0}
+--- !u!58 &5800002
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: 5
   m_Center: {x: 0, y: 0}
 --- !u!61 &6100000
 BoxCollider2D:
@@ -224,8 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 1600, y: 1300}
   backwardsSpeed: 2000
-  xBounds: {x: -8, y: -8}
-  yBounds: {x: 1, y: -4.5}
+  xBounds: {x: -10, y: 10}
+  yBounds: {x: 2, y: -4.5}
   amountFromCamera: 8.5
   attackPushForce: 1000
   power1ingInvunTime: 1
@@ -242,6 +283,7 @@ MonoBehaviour:
   neptuneAttackProjectile: {fileID: 400000, guid: da0adb51a9640ca419de4e7048b30b6e,
     type: 2}
   neptuneProjectionOffset: {x: 0, y: -1}
+  jupiterCooldownTime: 2
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +297,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: .5
   dmg: 2
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cad417beaf2da04aa8675ec9b2e515e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  findEnemysTime: .100000001
+  dmg: 2
+  enemysFirstHit: 4
+  lightningPrefab: {fileID: 400000, guid: 9e24f9236357ce54a9671875eacc72fc, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

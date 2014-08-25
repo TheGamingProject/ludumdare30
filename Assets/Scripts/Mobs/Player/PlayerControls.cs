@@ -42,6 +42,11 @@ public class PlayerControls : MonoBehaviour {
 	public Transform neptuneAttackProjectile;
 	public Vector2 neptuneProjectionOffset = new Vector2(1f, 0f);
 
+	// Jupiter
+	JupiterAttack jupiterAttack;
+	public float jupiterCooldownTime = 2;
+	Cooldown jupiterCooldown;
+
 
 	enum states {
 		idle, running, atk1, atk2
@@ -51,6 +56,7 @@ public class PlayerControls : MonoBehaviour {
 		basicAttackHitbox = GameObject.Find("basicAttackHitArea").GetComponent<HitboxForDad>();
 		saturnAttack = GameObject.Find("saturnHitArea").GetComponent<HitboxForDad>();
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
+		jupiterAttack = transform.FindChild("jupiterAttack").GetComponent<JupiterAttack>();
 
 		power1ingCooldown = new Cooldown(power1ingInvunTime);
 
@@ -60,6 +66,8 @@ public class PlayerControls : MonoBehaviour {
 		mercuryCooldown.setUp();
 		neptuneCooldown = new Cooldown(neptuneCooldownTime);
 		neptuneCooldown.setUp();
+		jupiterCooldown = new Cooldown(jupiterCooldownTime);
+		jupiterCooldown.setUp();
 	}
 
 	void Update () {
@@ -68,6 +76,7 @@ public class PlayerControls : MonoBehaviour {
 		saturnCooldown.updateCooldown();
 		mercuryCooldown.updateCooldown();
 		neptuneCooldown.updateCooldown();
+		jupiterCooldown.updateCooldown();
 
 		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
@@ -125,7 +134,7 @@ public class PlayerControls : MonoBehaviour {
 			effect.position = v;
 			effect.GetComponent<MercuryAttack>().setFacing(facing);
 		}
-		*/
+
 		if (neptuneCooldown.isCooldownUp()) {
 			Debug.Log("neptune attack");
 			startPower1ing();
@@ -137,6 +146,17 @@ public class PlayerControls : MonoBehaviour {
 			effect.position = v;
 			rigidbody2D.velocity = Vector2.zero;
 		}
+*/
+		if (jupiterCooldown.isCooldownUp()) {
+			Debug.Log("jupiter attack");
+			doJupiterAttack();
+			jupiterCooldown.resetCooldown();
+		}
+	}
+
+	void doJupiterAttack() {
+		jupiterAttack.startZap();
+		animationController.Play("heroPower2");
 	}
 
 	void startPower1ing() {
