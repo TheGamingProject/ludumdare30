@@ -53,6 +53,7 @@ public class PlayerControls : MonoBehaviour {
 	Cooldown marsCooldown;
 	public Vector2 marsProjectionOffset = new Vector2(2f, 0f);
 
+	private PlanetController planetMaster;
 
 	enum states {
 		idle, running, atk1, atk2
@@ -63,7 +64,7 @@ public class PlayerControls : MonoBehaviour {
 		saturnAttack = GameObject.Find("saturnHitArea").GetComponent<HitboxForDad>();
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 		jupiterAttack = transform.FindChild("jupiterAttack").GetComponent<JupiterAttack>();
-
+		planetMaster = Camera.main.GetComponent<PlanetController>();
 
 		power1ingCooldown = new Cooldown(power1ingInvunTime);
 
@@ -119,35 +120,45 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void trySpecialAttack() {
-		/*
-		if (saturnCooldown.isCooldownUp()) {
-			Debug.Log("saturn attack");
-			doSaturnAttack();
-			saturnCooldown.resetCooldown();
-		}
 
-		if (mercuryCooldown.isCooldownUp()) {
-			Debug.Log("mercury attack");
-			doMercuryAttack();
-			mercuryCooldown.resetCooldown();
-		}
+		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
-		if (neptuneCooldown.isCooldownUp()) {
-			Debug.Log("neptune attack");
-			doNeptuneAttack();
-			neptuneCooldown.resetCooldown();
-		}
-
-		if (jupiterCooldown.isCooldownUp()) {
-			Debug.Log("jupiter attack");
-			doJupiterAttack();
-			jupiterCooldown.resetCooldown();
-		}
-		*/
-		if (marsCooldown.isCooldownUp()) {
-			Debug.Log("mars attack");
-			doMarsAttack();
-			marsCooldown.resetCooldown();
+		switch (currentPlanet) {
+		case PlanetsLol.planets.saturn:
+			if (saturnCooldown.isCooldownUp()) {
+				Debug.Log("saturn attack");
+				doSaturnAttack();
+				saturnCooldown.resetCooldown();
+			}
+			break;
+		case PlanetsLol.planets.mercury:
+			if (mercuryCooldown.isCooldownUp()) {
+				Debug.Log("mercury attack");
+				doMercuryAttack();
+				mercuryCooldown.resetCooldown();
+			}
+			break;
+		case PlanetsLol.planets.neptune:
+			if (neptuneCooldown.isCooldownUp()) {
+				Debug.Log("neptune attack");
+				doNeptuneAttack();
+				neptuneCooldown.resetCooldown();
+			}
+			break;
+		case PlanetsLol.planets.jupiter:
+			if (jupiterCooldown.isCooldownUp()) {
+				Debug.Log("jupiter attack");
+				doJupiterAttack();
+				jupiterCooldown.resetCooldown();
+			}
+			break;
+		case PlanetsLol.planets.mars:
+			if (marsCooldown.isCooldownUp()) {
+				Debug.Log("mars attack");
+				doMarsAttack();
+				marsCooldown.resetCooldown();
+			}
+			break;
 		}
 	}
 

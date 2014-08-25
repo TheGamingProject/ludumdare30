@@ -89,6 +89,9 @@ public class PlanetController : MonoBehaviour {
 		overlayRenderer.color = c; 
 	}
 
+	public PlanetsLol.planets getCurrentPlanet() {
+		return currentPlanet;
+	}
 
 }
 

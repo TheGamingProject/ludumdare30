@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.86053562, y: -1.76053059, z: 0}
+  m_LocalPosition: {x: -.0599999987, y: -1.46000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -275,16 +275,19 @@ MonoBehaviour:
     type: 2}
   saturnProjectionOffset: {x: 0, y: -.5}
   idleSpeedThreshold: 1
-  saturnCooldownTime: 5
-  mercuryCooldownTime: 1
+  saturnCooldownTime: 4
+  mercuryCooldownTime: .800000012
   mercuryAttackProjectile: {fileID: 400000, guid: 298147affd74d3f499741a9c37775f78,
     type: 2}
   mercuryProjectionOffset: {x: 2.5, y: 0}
-  neptuneCooldownTime: 5
+  neptuneCooldownTime: 4
   neptuneAttackProjectile: {fileID: 400000, guid: da0adb51a9640ca419de4e7048b30b6e,
     type: 2}
   neptuneProjectionOffset: {x: 0, y: -1}
   jupiterCooldownTime: 1.5
+  marsAttackProjectile: {fileID: 400000, guid: 851fa9b5bf4d141489ef5adba70b4bb6, type: 2}
+  marsCooldownTime: 1.5
+  marsProjectionOffset: {x: 3, y: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
