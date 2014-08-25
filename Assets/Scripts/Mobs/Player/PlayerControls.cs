@@ -120,7 +120,6 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void trySpecialAttack() {
-
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
 		switch (currentPlanet) {
@@ -160,6 +159,24 @@ public class PlayerControls : MonoBehaviour {
 			}
 			break;
 		}
+	}
+
+	public float getCurrentCooldownPercent() {
+		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
+		
+		switch (currentPlanet) {
+		case PlanetsLol.planets.saturn:
+			return saturnCooldown.getPercent();
+		case PlanetsLol.planets.mercury:
+			return mercuryCooldown.getPercent();
+		case PlanetsLol.planets.neptune:
+			return neptuneCooldown.getPercent();
+		case PlanetsLol.planets.jupiter:
+			return jupiterCooldown.getPercent();
+		case PlanetsLol.planets.mars:
+			return marsCooldown.getPercent();
+		}
+		return 0;
 	}
 
 	void doSaturnAttack() {

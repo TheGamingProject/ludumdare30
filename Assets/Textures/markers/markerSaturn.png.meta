@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 0af18ab6bcf114001b7774ebc2ab5bdf
+guid: c692c43bcac7fef4091f95f095a3c36f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: startScreen
+    21300000: markerSaturn
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,9 +26,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

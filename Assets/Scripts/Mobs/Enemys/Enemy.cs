@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour {
 	int facing = -1;
 	bool death = false;
 
+	public Vector2 timeToLiveRange = new Vector2(10, 30);
+
 	Animator animationController;
 
 	public Vector2 attackCooldownTimeRange = new Vector2(1.0f, 1.2f);
@@ -154,9 +156,9 @@ public class Enemy : MonoBehaviour {
 		GameObject.Find("BodyCount").GetComponent<BodyCount>().addBody();
 		animationController.SetBool("death", true);
 		death = true;
+		rigidbody2D.collider2D.enabled = false;
 		gameObject.AddComponent<KillYourself>();
-		gameObject.GetComponent<KillYourself>().timeToLive = 30;
-		//Destroy(gameObject);
+		gameObject.GetComponent<KillYourself>().timeToLive = Random.Range(timeToLiveRange.x, timeToLiveRange.y);
 	}
 
 	void attack() {

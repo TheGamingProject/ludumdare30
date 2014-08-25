@@ -18,6 +18,10 @@ public class StartMenu : MonoBehaviour {
 	SpriteRenderer startOverlay;
 
 	void Start() {
+		transform.FindChild("BodyCount").GetComponent<GUIText>().enabled = false;
+		transform.FindChild("Labels").FindChild("Bodycount").GetComponent<GUIText>().enabled = false;
+		Camera.main.transform.FindChild("healthDisplay").GetComponent<HealthDisplay>().setHide(false);
+
 		Time.timeScale = 0.0f;
 		startOverlay = transform.FindChild("startScreen").GetComponent<SpriteRenderer>();
 	}
@@ -74,5 +78,9 @@ public class StartMenu : MonoBehaviour {
 		Time.timeScale = 1.0f;
 		startOverlay.enabled = false;
 		started = true;
+
+		transform.FindChild("BodyCount").GetComponent<GUIText>().enabled = true;
+		transform.FindChild("Labels").FindChild("Bodycount").GetComponent<GUIText>().enabled = true;
+		Camera.main.transform.FindChild("healthDisplay").GetComponent<HealthDisplay>().setHide(true);
 	}
 }

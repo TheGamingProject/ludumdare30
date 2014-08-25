@@ -54,6 +54,6 @@ public class Player : MonoBehaviour {
 
 	void die() {
 		//Destroy(gameObject);
-		Application.LoadLevel("startmenu");
+		Application.LoadLevel("scene1");
 	}
 }

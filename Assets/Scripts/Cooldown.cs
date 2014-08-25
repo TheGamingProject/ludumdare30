@@ -34,5 +34,13 @@ public class Cooldown {
 	public void setUp () {
 		currentCooldownTimeLeft = 0;
 	}
+
+	public float getPercent () {
+		if (isCooldownUp()) {
+			return 1.0f;
+		} else {
+			return (totalCooldownTime - currentCooldownTimeLeft) / totalCooldownTime;
+		}
+	}
 }
 
