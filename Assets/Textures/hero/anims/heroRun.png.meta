@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: a07a7341d5d504e2ca2fc967097e6f27
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: heroRun_0
+    21300002: heroRun_1
+    21300004: heroRun_2
+    21300006: heroRun_3
+    21300008: heroRun_4
+    21300010: heroRun_5
+    21300012: heroRun_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -49,8 +57,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_1
       rect:
@@ -59,8 +67,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_2
       rect:
@@ -69,8 +77,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_3
       rect:
@@ -79,8 +87,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_4
       rect:
@@ -89,8 +97,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_5
       rect:
@@ -99,8 +107,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heroRun_6
       rect:
@@ -109,8 +117,8 @@ TextureImporter:
         y: 0
         width: 50
         height: 50
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

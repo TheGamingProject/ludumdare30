@@ -100,7 +100,6 @@ public class PlanetsLol : MonoBehaviour {
 		return planets.saturn;
 	}
 
-	Vector3 skyboxSize;
 	void addSkybox (planets p, int number) {
 		GameObject go = new GameObject();
 		go.AddComponent<SpriteRenderer>();
@@ -130,7 +129,7 @@ public class PlanetsLol : MonoBehaviour {
 		Vector3 localScale = new Vector3(1.5f, 1.5f, 1.0f);
 		go.transform.localScale = localScale;
 
-		skyboxSize = (go.renderer.bounds.max - go.renderer.bounds.min);
+		//skyboxSize = (go.renderer.bounds.max - go.renderer.bounds.min);
 		Vector3 position = new Vector3(skyboxOffset.x - (number - 1) * skyboxGap, skyboxOffset.y, transform.position.z);
 		go.transform.position = position;
 

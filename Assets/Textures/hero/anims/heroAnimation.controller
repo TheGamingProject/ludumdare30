@@ -88,6 +88,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110125445
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110238756}
+  m_DstState: {fileID: 110228016}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110165026
 Transition:
   serializedVersion: 2
@@ -143,7 +163,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 08195766f0a7d2c46b1fcd5b3fe1947c, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 120, y: 132, z: 0}
+  m_Position: {x: 144, y: 132, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -162,6 +182,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110238756
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: heroPower1
+  m_Speed: .5
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: d7913c1d1b811b945a41950bf312199b, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 588, y: -132, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110240973
 State:
   m_ObjectHideFlags: 3
@@ -173,7 +208,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: d2fa8077dd8f9425a9c626d4697349cc, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 528, y: 12, z: 0}
+  m_Position: {x: 516, y: 0, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -188,7 +223,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 691eb7934f07c41c48bb7bdabc9129ec, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 468, y: 144, z: 0}
+  m_Position: {x: 516, y: 60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -203,7 +238,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 4be4b139f705e492faf7c8fa23164197, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 414, y: -166, z: 0}
+  m_Position: {x: 132, y: -192, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -221,9 +256,14 @@ StateMachine:
   - {fileID: 110243293}
   - {fileID: 110240973}
   - {fileID: 110267344}
+  - {fileID: 110238756}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
+    data:
+      first: {fileID: 110238756}
+      second:
+      - {fileID: 110125445}
     data:
       first: {fileID: 0}
       second: []

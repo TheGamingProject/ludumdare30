@@ -26,8 +26,10 @@ public class HitboxForDad : MonoBehaviour {
 	}
 
 	public void activate () {
-		activeHitbox = true;
-		activeCooldown = activeTime;
+		if (activeCooldown <= 0) {
+			activeHitbox = true;
+			activeCooldown = activeTime;
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D collider) {

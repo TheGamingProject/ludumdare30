@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour {
 
 	public Transform spawnee;
 
+	public float extraPerSecondsRatio = 1.0f/10.0f; 
+
 	void Start () {
 		resetCooldown();
 	}
@@ -27,6 +29,8 @@ public class Spawner : MonoBehaviour {
 
 	void spawn () {
 		int spawnAmount = Random.Range((int)spawnAmountRange.x, (int)spawnAmountRange.y);
+		int extraSpawnsForTimeLength = Mathf.FloorToInt(Time.timeSinceLevelLoad * extraPerSecondsRatio);
+		spawnAmount += extraSpawnsForTimeLength;
 		for (int i=0; i < spawnAmount; i++) {
 			spawnSpawnee();
 		}

@@ -11,11 +11,20 @@ public class PlayerControls : MonoBehaviour {
 	public float amountFromCamera = 8.5f;
 		
 	HitboxForDad basicAttackHitbox;
+	public float attackPushForce = 1000.0f;
+
+	HitboxForDad saturnAttack;
+	public Transform saturnAttackProjectile;
+	public Vector2 saturnProjectionOffset = new Vector2(0, .3f);
+
 	Animator animationController;
 	
-	bool walking = false;
+	//bool walking = false;
 
 	public float idleSpeedThreshold = 1.0f;
+
+	public float saturnCooldownTime = 5.0f;
+	Cooldown saturnCooldown;
 
 	enum states {
 		idle, running, atk1, atk2
@@ -23,7 +32,10 @@ public class PlayerControls : MonoBehaviour {
 
 	void Start () {
 		basicAttackHitbox = GameObject.Find("basicAttackHitArea").GetComponent<HitboxForDad>();
+		saturnAttack = GameObject.Find("saturnHitArea").GetComponent<HitboxForDad>();
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
+
+		saturnCooldown = new Cooldown(saturnCooldownTime);
 	}
 
 	void Update () {
@@ -80,13 +92,22 @@ public class PlayerControls : MonoBehaviour {
 
 		updateMovement();
 
-		if (Input.GetButtonDown("Fire1")) {
+		saturnCooldown.updateCooldown();
+
+		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
+		}
+
+		if (Input.GetButtonDown("Fire2") && !isAttacking()) {
+			trySpecialAttack();
 		}
 
 	}
 
 	// ATTACKING
+	bool isAttacking() {
+		return basicAttackHitbox.isActive() || saturnAttack.isActive();
+	}
 
 	void tryAttack1() {
 		basicAttackHitbox.activate();
@@ -97,8 +118,24 @@ public class PlayerControls : MonoBehaviour {
 			animationController.Play("heroAtk2");
 		}
 
+		float xSpeed = (Input.GetAxis("Horizontal") >= 0 ? attackPushForce : -attackPushForce);
+		Vector2 position = new Vector2(xSpeed, 0);
+		rigidbody2D.AddRelativeForce(position, ForceMode2D.Impulse);
 	}
 
+	void trySpecialAttack() {
+		if (saturnCooldown.isCooldownUp()) {
+			Debug.Log("saturn attack");
+			animationController.Play("heroPower1");
+			saturnCooldown.resetCooldown();
+			saturnAttack.activate();
+
+			Transform effect = Instantiate(saturnAttackProjectile) as Transform;
+			effect.parent = transform.parent;
+			Vector3 v = new Vector3(transform.position.x + saturnProjectionOffset.x, transform.position.y + saturnProjectionOffset.y, transform.position.z);
+			effect.position = v;
+		}
+	}
 	
 	// MOVEMENT 
 
@@ -106,16 +143,18 @@ public class PlayerControls : MonoBehaviour {
 		float xMovement = Input.GetAxis("Horizontal");
 		float yMovement = Input.GetAxis("Vertical");
 
-		Vector2 position = new Vector2(xMovement * speed.x, yMovement * speed.y);
-		rigidbody2D.AddRelativeForce(position);
-
+		if (!isAttacking()) {
+			float xSpeed = xMovement * (xMovement > 0 ? speed.x : backwardsSpeed);
+			Vector2 position = new Vector2(xSpeed, yMovement * speed.y);
+			rigidbody2D.AddRelativeForce(position);
+		}
 		Vector2 velocity = rigidbody2D.velocity;
-		Debug.Log(velocity);
+//		Debug.Log(velocity);
 		if (Mathf.Abs(velocity.x) <= idleSpeedThreshold && xMovement == 0) {
 			//idle ?
 			animationController.SetBool("running", false);
 		} else if (Mathf.Abs(velocity.x) > idleSpeedThreshold) {
-			Debug.Log("running");
+//			Debug.Log("running");
 			animationController.SetBool("running", true);
 		}
 

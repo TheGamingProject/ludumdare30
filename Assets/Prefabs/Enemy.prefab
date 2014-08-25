@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedRange: {x: 5, y: 10}
   fallenSpeed: 1
-  health: 2
+  health: 3
   invulnTime: .200000003
   getHitMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   attackCooldownTimeRange: {x: 1, y: 1.20000005}

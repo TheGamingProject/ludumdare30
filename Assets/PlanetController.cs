@@ -91,7 +91,6 @@ public class PlanetController : MonoBehaviour {
 
 	Color HsvToRgb(float h, float S, float V)
 	{
-		Debug.Log(h + " " + S + " " + V);
 		// ######################################################################
 		// T. Nathan Mundhenk
 		// mundhenk@usc.edu
