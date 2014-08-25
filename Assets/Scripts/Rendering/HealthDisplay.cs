@@ -55,6 +55,8 @@ public class HealthDisplay : MonoBehaviour {
 	}
 
 	void remove() {
+		if (symbolTransforms.Count <= 0) return;
+
 		Transform t = symbolTransforms[symbolTransforms.Count - 1];
 		symbolTransforms.Remove(t);
 		Destroy(t.gameObject);

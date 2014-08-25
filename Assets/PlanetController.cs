@@ -17,6 +17,14 @@ public class PlanetController : MonoBehaviour {
 	bool transitioning = false;
 	int hValueDifference;
 
+	public float symbolFlashTime = .5f;
+	public float symbolFlashOpacity = .5f;
+	public Transform marsSymbolPrefab;
+	public Transform saturnSymbolPrefab;
+	public Transform jupiterSymbolPrefab;
+	public Transform neptuneSymbolPrefab;
+	public Transform mercurySymbolPrefab;
+
 	void Start () {
 		planetMaster = GameObject.Find("0 - Skybox Background").GetComponent<PlanetsLol>();
 		overlayRenderer = transform.FindChild("overlay").GetComponent<SpriteRenderer>();
@@ -60,6 +68,20 @@ public class PlanetController : MonoBehaviour {
 
 		transitioning = true;
 		timeLeft = transitionTime;
+
+		//flash symbol
+		Transform quickSymbol = Instantiate(getPlanetSymbolPrefab()) as Transform;
+		Vector3 pos = new Vector3(transform.position.x, transform.position.y, 10);
+		quickSymbol.parent = transform;
+		quickSymbol.position = pos;
+		quickSymbol.localScale = new Vector3(15, 15, 1);
+		quickSymbol.gameObject.AddComponent<KillYourself>();
+		quickSymbol.GetComponent<KillYourself>().timeToLive = symbolFlashTime;
+		quickSymbol.GetComponent<SpriteRenderer>().color = new Color(1,1,1,symbolFlashOpacity);
+
+		//play noise
+		GetComponent<HashAudioScript>().PlayAudio("switch");
+
 	}
 
 	int getPlanetHValue(PlanetsLol.planets p) {
@@ -92,6 +114,22 @@ public class PlanetController : MonoBehaviour {
 	public PlanetsLol.planets getCurrentPlanet() {
 		return currentPlanet;
 	}
-
+	
+	Transform getPlanetSymbolPrefab () {
+		switch (currentPlanet) {
+		case PlanetsLol.planets.saturn:
+			return saturnSymbolPrefab;
+		case PlanetsLol.planets.mercury:
+			return mercurySymbolPrefab;
+		case PlanetsLol.planets.neptune:
+			return neptuneSymbolPrefab;
+		case PlanetsLol.planets.jupiter:
+			return jupiterSymbolPrefab;
+		case PlanetsLol.planets.mars:
+			return marsSymbolPrefab;
+		}
+		
+		return null;
+	}
 }
 
