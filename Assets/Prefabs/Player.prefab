@@ -229,7 +229,7 @@ MonoBehaviour:
   attackPushForce: 800
   saturnAttackProjectile: {fileID: 400000, guid: d74e769def6728645908bc33f136b162,
     type: 2}
-  saturnProjectionOffset: {x: 0, y: .300000012}
+  saturnProjectionOffset: {x: 0, y: -.5}
   idleSpeedThreshold: 1
   saturnCooldownTime: 5
 --- !u!114 &11400006

@@ -20,6 +20,10 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		invunlnCooldown.updateCooldown();
+
+		if (invunlnCooldown.isCooldownUp()) {
+			animationController.SetBool("invun", false);
+		}
 	}
 
 
@@ -39,9 +43,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void autoInvun() {
-		Transform t = Instantiate(bubblePrefab) as Transform;
-		t.position = transform.position;
-		t.parent = transform;
+		//Transform t = Instantiate(bubblePrefab) as Transform;
+		//t.position = transform.position;
+		//t.parent = transform;
+		animationController.SetBool("invun", true);
 		invunlnCooldown.resetCooldown();
 	}
 
