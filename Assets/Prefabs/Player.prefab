@@ -128,7 +128,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 500
-  m_LinearDrag: 2
+  m_LinearDrag: 3
   m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_FixedAngle: 1
@@ -222,8 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77f07473dca09b4abe1a1ad36d32403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 2000, y: 1700}
-  backwardsSpeed: 2500
+  speed: {x: 1600, y: 1300}
+  backwardsSpeed: 2000
+  xBounds: {x: -8, y: -8}
   yBounds: {x: 1, y: -4.5}
   amountFromCamera: 8.5
   attackPushForce: 1000

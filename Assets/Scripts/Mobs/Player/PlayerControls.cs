@@ -6,6 +6,7 @@ public class PlayerControls : MonoBehaviour {
 	
 	public Vector2 speed = new Vector2(3.0f, 2.0f);
 	public float backwardsSpeed = 2.0f;
+	public Vector2 xBounds = new Vector2(-8f, -8f);
 	public Vector2 yBounds = new Vector2(-.45f, -3.45f); 
 	
 	public float amountFromCamera = 8.5f;
@@ -76,6 +77,7 @@ public class PlayerControls : MonoBehaviour {
 			trySpecialAttack();
 		}
 
+		updatePower1ing();
 	}
 
 	// ATTACKING
@@ -133,6 +135,7 @@ public class PlayerControls : MonoBehaviour {
 			effect.parent = transform.parent;
 			Vector3 v = new Vector3(transform.position.x + facing * neptuneProjectionOffset.x, transform.position.y + neptuneProjectionOffset.y, transform.position.z);
 			effect.position = v;
+			rigidbody2D.velocity = Vector2.zero;
 		}
 	}
 
@@ -174,7 +177,26 @@ public class PlayerControls : MonoBehaviour {
 		//set facing 
 		setFacing((int)Mathf.Sign(xMovement));
 
-		updatePower1ing();
+		snapToBounds();
+	}
+
+	void snapToBounds () {
+		Vector3 position = transform.position;
+		// snap position to bounds
+		if (position.x < Camera.main.transform.position.x + xBounds.x) {
+			position.x = Camera.main.transform.position.x + xBounds.x;
+		}
+		if (position.x > Camera.main.transform.position.x + xBounds.y) {
+			position.x = Camera.main.transform.position.x + xBounds.y;
+		}
+
+		if (position.y < yBounds.y) {
+			position.y = yBounds.y;
+		}
+		if (position.y > yBounds.x) {
+			position.y = yBounds.x;
+		}
+		transform.position = position;
 	}
 
 	void setFacing(int newDirection) {
