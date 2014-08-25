@@ -16,10 +16,10 @@ public class Menu : MonoBehaviour {
 		if ( 
 		    GUI.Button(
 			new Rect(
-			0,
-			120,
-			400,
-			60
+			100,
+			Screen.height-(Screen.height/3),
+			Screen.width-200,
+			100
 			),
 			"C L I C K  T O  S T A R T"
 			) 
