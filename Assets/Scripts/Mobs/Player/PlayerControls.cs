@@ -26,6 +26,12 @@ public class PlayerControls : MonoBehaviour {
 	public float saturnCooldownTime = 5.0f;
 	Cooldown saturnCooldown;
 
+
+	public float mercuryCooldownTime = 1.0f;
+	Cooldown mercuryCooldown;
+	public Transform mercuryAttackProjectile;
+	public Vector2 mercuryProjectionOffset = new Vector2(1f, 0f);
+
 	enum states {
 		idle, running, atk1, atk2
 	}
@@ -36,63 +42,16 @@ public class PlayerControls : MonoBehaviour {
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 
 		saturnCooldown = new Cooldown(saturnCooldownTime);
+		saturnCooldown.setUp();
+		mercuryCooldown = new Cooldown(mercuryCooldownTime);
+		mercuryCooldown.setUp();
 	}
 
 	void Update () {
-
-		/*
-		Vector3 nextPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-		
-		if (xMovement != 0) {
-			if (xMovement > 0) {
-				nextPosition.x += xMovement * backwardsSpeed * Time.deltaTime;
-				
-				if (facing == -1) {
-					setFacing(1);
-				}
-			} else {
-				nextPosition.x += xMovement * speed.x * Time.deltaTime;
-				
-				if (facing == 1) {
-					setFacing(-1);
-				}
-			}
-			
-			if (!walking) {
-				animationController.SetTrigger("startRunning");
-			}
-			walking = true;
-		} else {
-			if (walking) {
-				animationController.SetTrigger("stopRunning");
-			}
-			walking = false;
-		}
-		
-		if (nextPosition.x < Camera.main.transform.position.x - amountFromCamera) {
-			nextPosition.x = Camera.main.transform.position.x - amountFromCamera;
-		} else if (nextPosition.x > Camera.main.transform.position.x + amountFromCamera) {
-			nextPosition.x = Camera.main.transform.position.x + amountFromCamera;
-		}
-		
-		
-		if (yMovement != 0) {
-			nextPosition.y += yMovement * speed.y * Time.deltaTime;
-			
-			// snap position to y bounds
-			if (nextPosition.y < yBounds.y) {
-				nextPosition.y = yBounds.y;
-			}
-			if (nextPosition.y > yBounds.x) {
-				nextPosition.y = yBounds.x;
-			}
-		}
-		transform.position = nextPosition;
-		 */
-
 		updateMovement();
 
 		saturnCooldown.updateCooldown();
+		mercuryCooldown.updateCooldown();
 
 		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
@@ -124,6 +83,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void trySpecialAttack() {
+		/*
 		if (saturnCooldown.isCooldownUp()) {
 			Debug.Log("saturn attack");
 			animationController.Play("heroPower1");
@@ -134,6 +94,19 @@ public class PlayerControls : MonoBehaviour {
 			effect.parent = transform.parent;
 			Vector3 v = new Vector3(transform.position.x + saturnProjectionOffset.x, transform.position.y + saturnProjectionOffset.y, transform.position.z);
 			effect.position = v;
+		}
+		*/
+		if (mercuryCooldown.isCooldownUp()) {
+			Debug.Log("mercury attack");
+			animationController.Play("heroPower2");
+			saturnCooldown.resetCooldown();
+			saturnAttack.activate();
+			
+			Transform effect = Instantiate(mercuryAttackProjectile) as Transform;
+			effect.parent = transform.parent;
+			Vector3 v = new Vector3(transform.position.x + facing * mercuryProjectionOffset.x, transform.position.y + mercuryProjectionOffset.y, transform.position.z);
+			effect.position = v;
+			effect.GetComponent<MercuryAttack>().setFacing(facing);
 		}
 	}
 	

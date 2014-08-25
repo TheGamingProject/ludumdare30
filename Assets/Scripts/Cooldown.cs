@@ -31,5 +31,8 @@ public class Cooldown {
 	public float getTimeLeft () {
 		return currentCooldownTimeLeft;
 	}
+	public void setUp () {
+		currentCooldownTimeLeft = 0;
+	}
 }
 
