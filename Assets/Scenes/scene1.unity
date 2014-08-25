@@ -586,6 +586,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 915579227}
   - 114: {fileID: 915579228}
+  - 114: {fileID: 915579229}
   m_Layer: 0
   m_Name: 3 - Foreground
   m_TagString: Untagged
@@ -623,6 +624,23 @@ MonoBehaviour:
   spawnAmountRange: {x: 1, y: 2}
   spawnee: {fileID: 400000, guid: 1540d054b5bcd99439eadbeb645d9ca9, type: 2}
   extraPerSecondsRatio: .0399999991
+--- !u!114 &915579229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 915579226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f1f56ac6924af44910a4d10a77f8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xFromCamera: 10
+  ySpawnRange: {x: -5, y: 1.5}
+  spawnTimeRange: {x: 30, y: 35}
+  spawnAmountRange: {x: 1, y: 1}
+  spawnee: {fileID: 400000, guid: 1cc4615d745c84a87b591a138294f84d, type: 2}
+  extraPerSecondsRatio: .0199999996
 --- !u!1 &947716068
 GameObject:
   m_ObjectHideFlags: 0
