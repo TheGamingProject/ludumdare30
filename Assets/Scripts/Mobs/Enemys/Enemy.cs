@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
 	public Material getHitMaterial;
 
 	int facing = -1;
+	bool death = false;
 
 	Animator animationController;
 
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (death) return;
 
 		updateFacing();
 
@@ -123,7 +125,7 @@ public class Enemy : MonoBehaviour {
 
 		health -= dmg;
 		if (health <= 0) {
-			Destroy(gameObject);
+			die();
 		}
 		
 		startFalling(fromWhom, dmg);
@@ -146,6 +148,15 @@ public class Enemy : MonoBehaviour {
 
 	bool isInvunUp() { 
 		return !isCooldownUp();
+	}
+
+	void die () {
+		GameObject.Find("BodyCount").GetComponent<BodyCount>().addBody();
+		animationController.SetBool("death", true);
+		death = true;
+		gameObject.AddComponent<KillYourself>();
+		gameObject.GetComponent<KillYourself>().timeToLive = 30;
+		//Destroy(gameObject);
 	}
 
 	void attack() {
