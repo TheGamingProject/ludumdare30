@@ -13,6 +13,10 @@ public class PlayerControls : MonoBehaviour {
 	HitboxForDad basicAttackHitbox;
 	public float attackPushForce = 1000.0f;
 
+	bool power1ing = false;
+	Cooldown power1ingCooldown;
+	public float power1ingInvunTime = 1.0f;
+
 	HitboxForDad saturnAttack;
 	public Transform saturnAttackProjectile;
 	public Vector2 saturnProjectionOffset = new Vector2(0, .3f);
@@ -31,6 +35,12 @@ public class PlayerControls : MonoBehaviour {
 	Cooldown mercuryCooldown;
 	public Transform mercuryAttackProjectile;
 	public Vector2 mercuryProjectionOffset = new Vector2(1f, 0f);
+	
+	public float neptuneCooldownTime = 1.0f;
+	Cooldown neptuneCooldown;
+	public Transform neptuneAttackProjectile;
+	public Vector2 neptuneProjectionOffset = new Vector2(1f, 0f);
+
 
 	enum states {
 		idle, running, atk1, atk2
@@ -41,10 +51,14 @@ public class PlayerControls : MonoBehaviour {
 		saturnAttack = GameObject.Find("saturnHitArea").GetComponent<HitboxForDad>();
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 
+		power1ingCooldown = new Cooldown(power1ingInvunTime);
+
 		saturnCooldown = new Cooldown(saturnCooldownTime);
 		saturnCooldown.setUp();
 		mercuryCooldown = new Cooldown(mercuryCooldownTime);
 		mercuryCooldown.setUp();
+		neptuneCooldown = new Cooldown(neptuneCooldownTime);
+		neptuneCooldown.setUp();
 	}
 
 	void Update () {
@@ -52,6 +66,7 @@ public class PlayerControls : MonoBehaviour {
 
 		saturnCooldown.updateCooldown();
 		mercuryCooldown.updateCooldown();
+		neptuneCooldown.updateCooldown();
 
 		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
@@ -65,7 +80,7 @@ public class PlayerControls : MonoBehaviour {
 
 	// ATTACKING
 	bool isAttacking() {
-		return basicAttackHitbox.isActive() || saturnAttack.isActive();
+		return basicAttackHitbox.isActive() || saturnAttack.isActive() || power1ing;
 	}
 
 	void tryAttack1() {
@@ -86,16 +101,16 @@ public class PlayerControls : MonoBehaviour {
 		/*
 		if (saturnCooldown.isCooldownUp()) {
 			Debug.Log("saturn attack");
-			animationController.Play("heroPower1");
 			saturnCooldown.resetCooldown();
 			saturnAttack.activate();
+			startPower1ing();
 
 			Transform effect = Instantiate(saturnAttackProjectile) as Transform;
 			effect.parent = transform.parent;
 			Vector3 v = new Vector3(transform.position.x + saturnProjectionOffset.x, transform.position.y + saturnProjectionOffset.y, transform.position.z);
 			effect.position = v;
 		}
-		*/
+
 		if (mercuryCooldown.isCooldownUp()) {
 			Debug.Log("mercury attack");
 			animationController.Play("heroPower2");
@@ -107,6 +122,31 @@ public class PlayerControls : MonoBehaviour {
 			Vector3 v = new Vector3(transform.position.x + facing * mercuryProjectionOffset.x, transform.position.y + mercuryProjectionOffset.y, transform.position.z);
 			effect.position = v;
 			effect.GetComponent<MercuryAttack>().setFacing(facing);
+		}
+		*/
+		if (neptuneCooldown.isCooldownUp()) {
+			Debug.Log("neptune attack");
+			startPower1ing();
+			neptuneCooldown.resetCooldown();
+			
+			Transform effect = Instantiate(neptuneAttackProjectile) as Transform;
+			effect.parent = transform.parent;
+			Vector3 v = new Vector3(transform.position.x + facing * neptuneProjectionOffset.x, transform.position.y + neptuneProjectionOffset.y, transform.position.z);
+			effect.position = v;
+		}
+	}
+
+	void startPower1ing() {
+		power1ing = true;
+		power1ingCooldown.resetCooldown();
+		animationController.SetBool("power1ing", true);
+	}
+
+	void updatePower1ing() {
+		power1ingCooldown.updateCooldown();
+		if (power1ing && power1ingCooldown.isCooldownUp()) {
+			power1ing = false;
+			animationController.SetBool("power1ing", false);
 		}
 	}
 	
@@ -133,6 +173,8 @@ public class PlayerControls : MonoBehaviour {
 
 		//set facing 
 		setFacing((int)Mathf.Sign(xMovement));
+
+		updatePower1ing();
 	}
 
 	void setFacing(int newDirection) {

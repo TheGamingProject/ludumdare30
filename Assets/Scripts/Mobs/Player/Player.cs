@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
 
 
 	public void getHit(Transform fromWhom, int dmg) {
+		if (animationController.GetBool("power1ing")) return;
+
 		if (invunlnCooldown.isCooldownUp()) {
 			health -= dmg;
 			Debug.Log("got hit" + health);

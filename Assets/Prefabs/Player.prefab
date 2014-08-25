@@ -222,11 +222,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77f07473dca09b4abe1a1ad36d32403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1000, y: 800}
-  backwardsSpeed: 1500
+  speed: {x: 2000, y: 1700}
+  backwardsSpeed: 2500
   yBounds: {x: 1, y: -4.5}
   amountFromCamera: 8.5
-  attackPushForce: 800
+  attackPushForce: 1000
+  power1ingInvunTime: 1
   saturnAttackProjectile: {fileID: 400000, guid: d74e769def6728645908bc33f136b162,
     type: 2}
   saturnProjectionOffset: {x: 0, y: -.5}
@@ -236,6 +237,10 @@ MonoBehaviour:
   mercuryAttackProjectile: {fileID: 400000, guid: 298147affd74d3f499741a9c37775f78,
     type: 2}
   mercuryProjectionOffset: {x: 2.5, y: 0}
+  neptuneCooldownTime: 5
+  neptuneAttackProjectile: {fileID: 400000, guid: da0adb51a9640ca419de4e7048b30b6e,
+    type: 2}
+  neptuneProjectionOffset: {x: 0, y: -1}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
