@@ -40,12 +40,10 @@ public class CooldownDisplay : MonoBehaviour {
 			Debug.Log("killed all");
 			Debug.Log(symbolTransforms.Count);
 		}
-		
-		Debug.Log(totalSymbols + " " + symbolTransforms.Count);
+
 		if (totalSymbols != symbolTransforms.Count) {
 			// adjust
 			int symbolsNeeded = totalSymbols - symbolTransforms.Count;
-			Debug.Log("diff: " + symbolsNeeded);
 			
 			if (symbolsNeeded > 0) {
 				do {

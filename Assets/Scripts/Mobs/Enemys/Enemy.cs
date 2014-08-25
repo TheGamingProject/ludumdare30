@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
-	private Transform player;
+	protected Transform player;
 
 	public Vector2 speedRange = new Vector2(10,20);
 	public float fallenSpeed = 1.0f;
@@ -29,6 +29,11 @@ public class Enemy : MonoBehaviour {
 	public Vector2 attackCooldownTimeRange = new Vector2(1.0f, 1.2f);
 	Cooldown attackCooldown;
 	public float attackRange = 2.0f;
+	
+	private HashAudioScript myAudio;
+	public float notPlayAudioChance = .25f;
+	public string attackSound = "KFX4";
+	public string deathSound = "enemydeath";
 
 	void Start () {
 		foreach (Transform child in transform.parent){
@@ -39,6 +44,8 @@ public class Enemy : MonoBehaviour {
 
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 		basicAttackHitbox = transform.FindChild("basicAttackBounds").GetComponent<HitboxForDad>();
+
+		myAudio = GetComponent<HashAudioScript>();
 
 		speed = Random.Range(speedRange.x, speedRange.y);
 
@@ -152,13 +159,15 @@ public class Enemy : MonoBehaviour {
 		return !isCooldownUp();
 	}
 
-	void die () {
+	protected void die () {
 		GameObject.Find("BodyCount").GetComponent<BodyCount>().addBody();
 		animationController.SetBool("death", true);
 		death = true;
 		rigidbody2D.collider2D.enabled = false;
 		gameObject.AddComponent<KillYourself>();
 		gameObject.GetComponent<KillYourself>().timeToLive = Random.Range(timeToLiveRange.x, timeToLiveRange.y);
+		
+		myAudio.PlayAudio(deathSound);
 	}
 
 	void attack() {
@@ -166,6 +175,11 @@ public class Enemy : MonoBehaviour {
 		basicAttackHitbox.activate();
 		animationController.SetTrigger("startAttack");
 		attackCooldown.resetCooldown();
+
+		float chance = Random.Range(0, 100);
+		if (notPlayAudioChance *  100 < chance) { 
+			myAudio.PlayAudio(attackSound);
+		}
 	}
 
 	bool isCloseEnoughToAttack () {

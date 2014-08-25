@@ -285,6 +285,9 @@ StateMachine:
       - {fileID: 110161167}
       - {fileID: 110180145}
     data:
+      first: {fileID: 110214768}
+      second: []
+    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110155677}
@@ -294,13 +297,10 @@ StateMachine:
       second:
       - {fileID: 110100000}
     data:
-      first: {fileID: 110214768}
+      first: {fileID: 110274748}
       second: []
     data:
       first: {fileID: 110263246}
-      second: []
-    data:
-      first: {fileID: 110274748}
       second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 0, y: -12, z: 0}
