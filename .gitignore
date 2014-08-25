@@ -5,6 +5,7 @@ Temp/
 Obj/
 UnityGenerated/
 Library/
+!dist/
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
