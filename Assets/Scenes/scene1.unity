@@ -427,11 +427,11 @@ MonoBehaviour:
   transitionTime: 6
   symbolFlashTime: 2
   symbolFlashOpacity: .5
-  marsSymbolPrefab: {fileID: 400000, guid: 923a732c022c69a4e8a1b11382789329, type: 2}
-  saturnSymbolPrefab: {fileID: 400000, guid: 1ea10ad6edc0d9d4faddf7118dacebe9, type: 2}
-  jupiterSymbolPrefab: {fileID: 400000, guid: cf21ade28585f5d429cd531ecfe9acb3, type: 2}
-  neptuneSymbolPrefab: {fileID: 400000, guid: 4d2700cab570fce4ba89006e24636edf, type: 2}
-  mercurySymbolPrefab: {fileID: 400000, guid: d180841c9a263e4409a3f03a974f8fcf, type: 2}
+  marsSymbolPrefab: {fileID: 400000, guid: 6bc5a924db4bf9940ab6524aad2a4796, type: 2}
+  saturnSymbolPrefab: {fileID: 400000, guid: 15da69c51b145d24c950d1ca13b83d9d, type: 2}
+  jupiterSymbolPrefab: {fileID: 400000, guid: 0dd83c782898cbb45814f0a5681c899c, type: 2}
+  neptuneSymbolPrefab: {fileID: 400000, guid: ce6b1362893fc6e4eaeba792bce5daa7, type: 2}
+  mercurySymbolPrefab: {fileID: 400000, guid: bf848b9740238bd45ad2b1abee8bf3ab, type: 2}
 --- !u!82 &521036322
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,6 @@ Transform:
   m_Children:
   - {fileID: 746497320}
   - {fileID: 767943722}
-  - {fileID: 1655687411}
   m_Father: {fileID: 1378900889}
   m_RootOrder: 0
 --- !u!114 &1188271985
@@ -1327,9 +1326,8 @@ MonoBehaviour:
   neptuneSymbol: {fileID: 21300000, guid: ab17c45af254ac3418b23702edc7c241, type: 3}
   saturnSymbol: {fileID: 21300000, guid: ffe09b45f732dd943b6829c8403873ad, type: 3}
   skyboxOffset: {x: 0, y: 0}
-  symbolOffset: {x: 7.42999983, y: 2.56999993}
+  symbolOffset: {x: 7.33300018, y: 2.56999993}
   skyboxGap: 34
-  symbolGap: 17.75
   planetsSkyboxXSpeed: 2
 --- !u!1 &1378900888
 GameObject:
@@ -1513,56 +1511,6 @@ MonoBehaviour:
   startingX: -1
   maxSymbols: 10
   opacityRange: {x: .400000006, y: 1}
---- !u!1 &1655687410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1655687411}
-  - 212: {fileID: 1655687412}
-  m_Layer: 0
-  m_Name: background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1655687411
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655687410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.2685452, y: -4.69999933, z: 0}
-  m_LocalScale: {x: 1.566697, y: 1.56668901, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1188271983}
-  m_RootOrder: 2
---- !u!212 &1655687412
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655687410}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 09f75898f2f62ee4fab91fda8ccf00a9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1728015436
 GameObject:
   m_ObjectHideFlags: 0

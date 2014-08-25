@@ -74,7 +74,6 @@ public class PlanetController : MonoBehaviour {
 		Vector3 pos = new Vector3(transform.position.x, transform.position.y, 10);
 		quickSymbol.parent = transform;
 		quickSymbol.position = pos;
-		quickSymbol.localScale = new Vector3(15, 15, 1);
 		quickSymbol.gameObject.AddComponent<KillYourself>();
 		quickSymbol.GetComponent<KillYourself>().timeToLive = symbolFlashTime;
 		quickSymbol.GetComponent<SpriteRenderer>().color = new Color(1,1,1,symbolFlashOpacity);

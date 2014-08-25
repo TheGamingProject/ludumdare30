@@ -18,7 +18,6 @@ public class PlanetsLol : MonoBehaviour {
 	public Vector2 skyboxOffset = new Vector2();
 	public Vector2 symbolOffset = new Vector2(6.0f, 2.0f);
 	public float skyboxGap = 35.00f;
-	public float symbolGap = 17.88f;
 
 	private Transform symbolParent;
 
@@ -37,12 +36,15 @@ public class PlanetsLol : MonoBehaviour {
 	
 	List<planets> planetOrder = new List<planets>();
 
+	Vector3 backgroundSize;
+
 	void Start () {
 		symbolParent = GameObject.Find("2 - Middleground").transform.FindChild("symbols");
 
+		Transform dojoBackground = GameObject.Find("1 - Background").transform.Find("ground").GetChild(0);
+		backgroundSize = dojoBackground.renderer.bounds.max - dojoBackground.renderer.bounds.min;
+
 		currentPlanet = planets.none;
-		//addSkybox(currentPlanet, currentPlanetNumber);
-		//addSymbol(currentPlanet, currentPlanetNumber);
 
 		addNextPlanetStuff();
 		addNextPlanetStuff();
@@ -165,7 +167,11 @@ public class PlanetsLol : MonoBehaviour {
 		Vector3 localScale = new Vector3(1.7f, 1.7f, 1.0f);
 		go.transform.localScale = localScale;
 
-		Vector3 position = new Vector3(symbolOffset.x + (number - 1) * symbolGap, symbolOffset.y, symbolParent.position.z);
+		Vector3 position = new Vector3(symbolOffset.x + (number - 1) * backgroundSize.x, symbolOffset.y, symbolParent.position.z);
+		if (symbols.Count == 0) {
+			position.x = 7.45f;
+		}
+
 		go.transform.position = position;
 
 		symbols.Add(go.transform);

@@ -37,8 +37,6 @@ public class CooldownDisplay : MonoBehaviour {
 		if (totalSymbols <= .1f) {
 			removeAll();
 			shift();
-			Debug.Log("killed all");
-			Debug.Log(symbolTransforms.Count);
 		}
 
 		if (totalSymbols != symbolTransforms.Count) {
