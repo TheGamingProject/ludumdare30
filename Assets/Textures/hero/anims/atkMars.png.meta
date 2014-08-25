@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 221f279aa0144433e9d34e2df435f37f
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: atkMars_0
+    21300002: atkMars_1
+    21300004: atkMars_2
+    21300006: atkMars_3
+    21300008: atkMars_4
+    21300010: atkMars_5
+    21300012: atkMars_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -49,18 +57,18 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_1
       rect:
         serializedVersion: 2
-        x: 240
+        x: 242
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_2
       rect:
@@ -69,8 +77,8 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_3
       rect:
@@ -79,8 +87,8 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_4
       rect:
@@ -89,8 +97,8 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_5
       rect:
@@ -99,8 +107,8 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: atkMars_6
       rect:
@@ -109,8 +117,8 @@ TextureImporter:
         y: 0
         width: 240
         height: 120
-      alignment: 4
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

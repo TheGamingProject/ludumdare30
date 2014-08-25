@@ -8,7 +8,7 @@ public class MercuryAttack : MonoBehaviour {
 	public int dmg = 3;
 	public float radiusGrowth = 1.0f;
 
-	public CircleCollider2D myCollider;
+	CircleCollider2D myCollider;
 
 	// Use this for initialization
 	void Start () {

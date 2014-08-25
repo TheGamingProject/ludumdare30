@@ -342,6 +342,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: marsProjectile
+      value: 
+      objectReference: {fileID: 400000, guid: 851fa9b5bf4d141489ef5adba70b4bb6, type: 2}
+    - target: {fileID: 11400004, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: marsAttackProjectile
+      value: 
+      objectReference: {fileID: 400000, guid: 851fa9b5bf4d141489ef5adba70b4bb6, type: 2}
+    - target: {fileID: 11400004, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: marsCooldownTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: marsProjectionOffset.x
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
   m_RootGameObject: {fileID: 1018535079}
@@ -797,6 +813,9 @@ MonoBehaviour:
     type: 2}
   neptuneProjectionOffset: {x: 0, y: -1}
   jupiterCooldownTime: 1.5
+  marsAttackProjectile: {fileID: 400000, guid: 851fa9b5bf4d141489ef5adba70b4bb6, type: 2}
+  marsCooldownTime: 1.5
+  marsProjectionOffset: {x: 3, y: 0}
 --- !u!4 &1018535083
 Transform:
   m_ObjectHideFlags: 0

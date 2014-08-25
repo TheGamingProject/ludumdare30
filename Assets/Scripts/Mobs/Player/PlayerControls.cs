@@ -47,6 +47,12 @@ public class PlayerControls : MonoBehaviour {
 	public float jupiterCooldownTime = 2;
 	Cooldown jupiterCooldown;
 
+	// Mars
+	public Transform marsAttackProjectile;
+	public float marsCooldownTime = 2;
+	Cooldown marsCooldown;
+	public Vector2 marsProjectionOffset = new Vector2(2f, 0f);
+
 
 	enum states {
 		idle, running, atk1, atk2
@@ -58,6 +64,7 @@ public class PlayerControls : MonoBehaviour {
 		animationController = transform.FindChild("animator").GetComponent<Animator>();
 		jupiterAttack = transform.FindChild("jupiterAttack").GetComponent<JupiterAttack>();
 
+
 		power1ingCooldown = new Cooldown(power1ingInvunTime);
 
 		saturnCooldown = new Cooldown(saturnCooldownTime);
@@ -68,6 +75,8 @@ public class PlayerControls : MonoBehaviour {
 		neptuneCooldown.setUp();
 		jupiterCooldown = new Cooldown(jupiterCooldownTime);
 		jupiterCooldown.setUp();
+		marsCooldown = new Cooldown(marsCooldownTime);
+		marsCooldown.setUp();
 	}
 
 	void Update () {
@@ -77,6 +86,7 @@ public class PlayerControls : MonoBehaviour {
 		mercuryCooldown.updateCooldown();
 		neptuneCooldown.updateCooldown();
 		jupiterCooldown.updateCooldown();
+		marsCooldown.updateCooldown();
 
 		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
@@ -109,42 +119,23 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void trySpecialAttack() {
-
+		/*
 		if (saturnCooldown.isCooldownUp()) {
 			Debug.Log("saturn attack");
+			doSaturnAttack();
 			saturnCooldown.resetCooldown();
-			saturnAttack.activate();
-			startPower1ing();
-
-			Transform effect = Instantiate(saturnAttackProjectile) as Transform;
-			effect.parent = transform.parent;
-			Vector3 v = new Vector3(transform.position.x + saturnProjectionOffset.x, transform.position.y + saturnProjectionOffset.y, transform.position.z);
-			effect.position = v;
 		}
 
 		if (mercuryCooldown.isCooldownUp()) {
 			Debug.Log("mercury attack");
-			animationController.Play("heroPower2");
-			saturnCooldown.resetCooldown();
-			saturnAttack.activate();
-			
-			Transform effect = Instantiate(mercuryAttackProjectile) as Transform;
-			effect.parent = transform.parent;
-			Vector3 v = new Vector3(transform.position.x + facing * mercuryProjectionOffset.x, transform.position.y + mercuryProjectionOffset.y, transform.position.z);
-			effect.position = v;
-			effect.GetComponent<MercuryAttack>().setFacing(facing);
+			doMercuryAttack();
+			mercuryCooldown.resetCooldown();
 		}
 
 		if (neptuneCooldown.isCooldownUp()) {
 			Debug.Log("neptune attack");
-			startPower1ing();
+			doNeptuneAttack();
 			neptuneCooldown.resetCooldown();
-			
-			Transform effect = Instantiate(neptuneAttackProjectile) as Transform;
-			effect.parent = transform.parent;
-			Vector3 v = new Vector3(transform.position.x + facing * neptuneProjectionOffset.x, transform.position.y + neptuneProjectionOffset.y, transform.position.z);
-			effect.position = v;
-			rigidbody2D.velocity = Vector2.zero;
 		}
 
 		if (jupiterCooldown.isCooldownUp()) {
@@ -152,11 +143,55 @@ public class PlayerControls : MonoBehaviour {
 			doJupiterAttack();
 			jupiterCooldown.resetCooldown();
 		}
+		*/
+		if (marsCooldown.isCooldownUp()) {
+			Debug.Log("mars attack");
+			doMarsAttack();
+			marsCooldown.resetCooldown();
+		}
+	}
+
+	void doSaturnAttack() {
+		saturnAttack.activate();
+		startPower1ing();
+		
+		Transform effect = Instantiate(saturnAttackProjectile) as Transform;
+		effect.parent = transform.parent;
+		Vector3 v = new Vector3(transform.position.x + saturnProjectionOffset.x, transform.position.y + saturnProjectionOffset.y, transform.position.z);
+		effect.position = v;
+	}
+
+	void doMercuryAttack() {
+		animationController.Play("heroPower2");
+		
+		Transform effect = Instantiate(mercuryAttackProjectile) as Transform;
+		effect.parent = transform.parent;
+		Vector3 v = new Vector3(transform.position.x + facing * mercuryProjectionOffset.x, transform.position.y + mercuryProjectionOffset.y, transform.position.z);
+		effect.position = v;
+		effect.GetComponent<MercuryAttack>().setFacing(facing);
 	}
 
 	void doJupiterAttack() {
 		jupiterAttack.startZap();
 		animationController.Play("heroPower2");
+	}
+
+	void doNeptuneAttack() {
+		startPower1ing();
+		Transform effect = Instantiate(neptuneAttackProjectile) as Transform;
+		effect.parent = transform.parent;
+		Vector3 v = new Vector3(transform.position.x + facing * neptuneProjectionOffset.x, transform.position.y + neptuneProjectionOffset.y, transform.position.z);
+		effect.position = v;
+		rigidbody2D.velocity = Vector2.zero;
+	}
+
+	void doMarsAttack() {
+		animationController.Play("heroPower2");
+		Transform effect = Instantiate(marsAttackProjectile) as Transform;
+		effect.parent = transform.parent;
+		Vector3 v = new Vector3(transform.position.x + facing * marsProjectionOffset.x, transform.position.y + marsProjectionOffset.y, transform.position.z);
+		effect.position = v;
+		rigidbody2D.velocity = Vector2.zero;
 	}
 
 	void startPower1ing() {
