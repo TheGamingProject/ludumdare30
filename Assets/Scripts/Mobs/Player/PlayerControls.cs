@@ -109,7 +109,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	void trySpecialAttack() {
-		/*
+
 		if (saturnCooldown.isCooldownUp()) {
 			Debug.Log("saturn attack");
 			saturnCooldown.resetCooldown();
@@ -146,7 +146,7 @@ public class PlayerControls : MonoBehaviour {
 			effect.position = v;
 			rigidbody2D.velocity = Vector2.zero;
 		}
-*/
+
 		if (jupiterCooldown.isCooldownUp()) {
 			Debug.Log("jupiter attack");
 			doJupiterAttack();

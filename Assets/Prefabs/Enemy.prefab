@@ -97,8 +97,8 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 1
-  m_LinearDrag: 2
+  m_Mass: .5
+  m_LinearDrag: 10
   m_AngularDrag: 5
   m_GravityScale: 0
   m_FixedAngle: 1
@@ -142,7 +142,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f6ca8e04628914da7f0d225f543867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRange: {x: 5, y: 10}
+  speedRange: {x: 10, y: 15}
   fallenSpeed: 1
   health: 3
   invulnTime: .200000003

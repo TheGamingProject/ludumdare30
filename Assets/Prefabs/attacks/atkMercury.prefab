@@ -73,7 +73,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73168d63ad8cdd84db76842dcae43ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: .850000024
+  timeToLive: .5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
