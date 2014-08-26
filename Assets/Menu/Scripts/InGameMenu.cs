@@ -204,7 +204,7 @@ public class InGameMenu : MonoBehaviour {
 
 		Transform bc = transform.FindChild("BodyCount");
 		killCount = bc.GetComponent<BodyCount>().getCount();
-		bc.position = new Vector3(bc.position.x, bc.position.y + bodyCountOffset, bc.position.z);
+		//bc.position = new Vector3(bc.position.x, bc.position.y + bodyCountOffset, bc.position.z);
 		
 		transform.FindChild("Labels").FindChild("Bodycount").GetComponent<GUIText>().enabled = false;
 		Camera.main.transform.FindChild("healthDisplay").GetComponent<HealthDisplay>().setHide(true);

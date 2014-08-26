@@ -54,7 +54,11 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (death) return;
+		if (death){
+			animationController.SetBool("death", true); // hacked
+			animationController.Play("enemyDead");
+			return;	
+		}
 
 		updateFacing();
 
@@ -162,6 +166,7 @@ public class Enemy : MonoBehaviour {
 	protected void die () {
 		GameObject.Find("BodyCount").GetComponent<BodyCount>().addBody();
 		animationController.SetBool("death", true);
+		animationController.Play("enemyDead");
 		death = true;
 		rigidbody2D.collider2D.enabled = false;
 		gameObject.AddComponent<KillYourself>();

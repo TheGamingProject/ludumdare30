@@ -52,6 +52,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void die() {
+		GetComponent<HashAudioScript>().PlayAudio("death");
 		GameObject.Find("GUI").GetComponent<InGameMenu>().endGame();
 	}
 }
