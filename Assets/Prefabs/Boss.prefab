@@ -285,7 +285,7 @@ MonoBehaviour:
   notPlayAudioChance: .25
   attackSound: KFX5
   deathSound: bossdeath
-  healthGivenToPlayerOnDeath: 5
+  healthGivenToPlayerOnDeath: 10
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

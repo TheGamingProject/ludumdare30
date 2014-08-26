@@ -225,7 +225,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 8ec763e7fdb6dd44e8ec96e9e33ff500, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .699999988
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -283,7 +283,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 5403bf71a9a8c1b41a36b175e8db24de, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .699999988
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -341,7 +341,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: ca1ee3392650b1f42a6497f8fa687d44, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .699999988
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -417,7 +417,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   invulnTime: 1
-  bubblePrefab: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -453,7 +452,7 @@ MonoBehaviour:
     type: 2}
   saturnProjectionOffset: {x: 0, y: -.5}
   idleSpeedThreshold: 1
-  saturnCooldownTime: 3
+  saturnCooldownTime: 2.5
   mercuryCooldownTime: .800000012
   mercuryAttackProjectile: {fileID: 400000, guid: 298147affd74d3f499741a9c37775f78,
     type: 2}

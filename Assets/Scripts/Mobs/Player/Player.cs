@@ -6,7 +6,6 @@ public class Player : MonoBehaviour {
 	public int health = 10;
 	public float invulnTime = .5f;
 	Cooldown invunlnCooldown;
-	public Transform bubblePrefab;
 
 	Animator animationController;
 
@@ -53,7 +52,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void die() {
-		//Destroy(gameObject);
-		Application.LoadLevel("scene1");
+		GameObject.Find("GUI").GetComponent<InGameMenu>().endGame();
 	}
 }

@@ -17,5 +17,9 @@ public class BodyCount : MonoBehaviour
 	public void addBody() {
 		total++;
 	}
+
+	public int getCount() {
+		return total;
+	}
 }
 
