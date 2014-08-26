@@ -279,12 +279,14 @@ MonoBehaviour:
   health: 3
   invulnTime: .200000003
   getHitMaterial: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  timeToLiveRange: {x: 5, y: 20}
+  timeToLiveRange: {x: 1, y: 10}
   attackCooldownTimeRange: {x: 1, y: 1.20000005}
   attackRange: 1.20000005
   notPlayAudioChance: .660000026
   attackSound: KFX4
   deathSound: enemydeath
+  recentlyShocked: 0
+  shockedTime: .25
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

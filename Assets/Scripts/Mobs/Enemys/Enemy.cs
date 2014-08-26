@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour {
 	public string attackSound = "KFX4";
 	public string deathSound = "enemydeath";
 
+	public bool recentlyShocked = false;
+	public float shockedTime = .25f;
+	private Cooldown shockedCooldown;
+
 	void Start () {
 		foreach (Transform child in transform.parent){
 			if (child.name == "Player"){
@@ -50,11 +54,12 @@ public class Enemy : MonoBehaviour {
 		speed = Random.Range(speedRange.x, speedRange.y);
 
 		attackCooldown = new Cooldown(attackCooldownTimeRange);
+		shockedCooldown = new Cooldown(shockedTime);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (death){
+		if (death) {
 			animationController.SetBool("death", true); // hacked
 			animationController.Play("enemyDead");
 			return;	
@@ -67,6 +72,9 @@ public class Enemy : MonoBehaviour {
 	//		myMeshRenderer.material = defaultMaterial;
 			//resetCooldown();
 		}
+
+		shockedCooldown.updateCooldown();
+		updateShock();
 
 		updateFalling();
 
@@ -161,6 +169,17 @@ public class Enemy : MonoBehaviour {
 
 	bool isInvunUp() { 
 		return !isCooldownUp();
+	}
+
+	void updateShock() {
+		if (recentlyShocked && shockedCooldown.isCooldownUp()) {
+			recentlyShocked = false;
+		}
+	}
+
+	public void shock () {
+		recentlyShocked = true;
+		shockedCooldown.resetCooldown();
 	}
 
 	protected void die () {

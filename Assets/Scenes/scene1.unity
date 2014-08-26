@@ -746,6 +746,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
+      propertyPath: dmg
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 449c8ba7128d4ec4896e7a6633746d86, type: 2}
   m_RootGameObject: {fileID: 1018535079}
@@ -2083,6 +2087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cad417beaf2da04aa8675ec9b2e515e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 50
+  dmg: 2
   enemysFirstHit: 6
   lightningPrefab: {fileID: 400000, guid: 9e24f9236357ce54a9671875eacc72fc, type: 2}

@@ -68,7 +68,7 @@ public class Lightning : MonoBehaviour {
 		//Debug.Log(enemys.Count);
 		for(int i=0;i<enemys.Count;i++) {
 			if(total >= bouncesLeft) break; 
-			if (enemys[i].isDead()) continue;
+			if (enemys[i].isDead() || enemys[i].recentlyShocked) continue;
 			
 			Debug.Log("zapped-" + bouncesLeft);
 			zap(enemys[i]);
@@ -78,6 +78,8 @@ public class Lightning : MonoBehaviour {
 	}
 	
 	void zap(Enemy e) {
+		if (bouncesLeft <= 0) return;
+
 		Transform lightning = Instantiate(linkToSelf) as Transform;
 		lightning.GetComponent<Lightning>().bouncesLeft = bouncesLeft - 1;
 		lightning.GetComponent<Lightning>().dmg = dmg - 1;
@@ -88,6 +90,7 @@ public class Lightning : MonoBehaviour {
 		line.SetPosition(0, transform.position);
 		line.SetPosition(1, e.transform.position);
 		lightning.GetComponent<Lightning>().init();
+		e.shock();
 		lightning.GetComponent<Lightning>().strike(e);
 	}
 
