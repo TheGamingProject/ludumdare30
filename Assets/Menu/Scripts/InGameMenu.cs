@@ -163,11 +163,11 @@ public class InGameMenu : MonoBehaviour {
 	}
 
 	void openLink(string url) {
-		if (Application.isWebPlayer) {
+		/*if (Application.isWebPlayer) {
 			Application.ExternalEval("window.open('" + url + "','_blank')");
-		} else {
+		} else {*/
 			Application.OpenURL(url);
-		}
+		//}
 	}
 
 	void updateFade () {
