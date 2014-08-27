@@ -103,11 +103,11 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	// ATTACKING
-	bool isAttacking() {
+	public bool isAttacking() {
 		return basicAttackHitbox.isActive() || saturnAttack.isActive() || power1ing;
 	}
 
-	void tryAttack1() {
+	public void tryAttack1() {
 		basicAttackHitbox.activate();
 		int r = Random.Range(0, 2);
 		if (r == 0) {
@@ -131,7 +131,7 @@ public class PlayerControls : MonoBehaviour {
 		rigidbody2D.AddRelativeForce(position, ForceMode2D.Impulse);
 	}
 
-	void trySpecialAttack() {
+	public void trySpecialAttack() {
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
 		switch (currentPlanet) {
@@ -240,7 +240,7 @@ public class PlayerControls : MonoBehaviour {
 		animationController.SetBool("power1ing", true);
 	}
 
-	void updatePower1ing() {
+	public void updatePower1ing() {
 		power1ingCooldown.updateCooldown();
 		if (power1ing && power1ingCooldown.isCooldownUp()) {
 			power1ing = false;

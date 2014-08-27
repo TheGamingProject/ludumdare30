@@ -9,7 +9,7 @@ public class TouchJoystick : TouchLogic
 	public float playerSpeed = 2f, maxJoyDelta = 0.05f, rotateSpeed = 100.0f;
 	private Vector3 oJoyPos, joyDelta;
 	private Transform joyTrans = null;
-	public CharacterController joytroller;
+	public Rigidbody2D joytroller;
 	private float pitch = 0.0f,
 	yaw = 0.0f;
 	private Vector3 oRotation;
@@ -62,11 +62,12 @@ public class TouchJoystick : TouchLogic
 		switch(joystickType)
 		{
 		case JoystickType.Movement:
-			joytroller.Move ((player.forward * joyDelta.z + player.right * joyDelta.x) * playerSpeed * Time.deltaTime);
+			joytroller.AddRelativeForce ((player.forward * joyDelta.z + player.right * joyDelta.x) * playerSpeed * Time.deltaTime);
 			break;
 		case JoystickType.Aiming:
 			pitch -= Input.GetTouch(touch2Watch).deltaPosition.y * rotateSpeed * Time.deltaTime;
 			yaw += Input.GetTouch(touch2Watch).deltaPosition.x * rotateSpeed * Time.deltaTime;
+			break;
 		}
 	}
 	
@@ -77,18 +78,19 @@ public class TouchJoystick : TouchLogic
 		y = Input.GetTouch (touch2Watch).position.y / Screen.height;
 		//combine the floats into a single Vector3 and limit the delta distance
 		
-		//If you want a circularly limited joystick, use this (uncomment it)
-		Vector3 position = Vector3.ClampMagnitude(new Vector3 (x-oJoyPos.x, y-oJoyPos.y, 0), maxJoyDelta) + oJoyPos;
-		
+		//If you want a rectangularly limited joystick (used in video), use this
+		Vector3 position = new Vector3 (Mathf.Clamp(x, oJoyPos.x - maxJoyDelta, oJoyPos.x + maxJoyDelta),
+		                                Mathf.Clamp(y, oJoyPos.y - maxJoyDelta, oJoyPos.y + maxJoyDelta), 0);//use Vector3.ClampMagnitude instead if you want a circular clamp instead of a square
+
 		//joyDelta used for moving the player
 		joyDelta = new Vector3(position.x - oJoyPos.x, 0, position.y - oJoyPos.y).normalized;
 		//position used for moving the joystick
 		return position;
 	}
 	
-	void LateUpdate()
-	{
-		if(!joytroller.isGrounded)
-			joytroller.Move(Vector3.down * 2);
-	}
+//	void LateUpdate()
+//	{
+//		if(!joytroller.isGrounded)
+//			joytroller.AddRelativeForce(Vector3.down * 2);
+//	}
 }
