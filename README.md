@@ -7,7 +7,7 @@ It has since been updated and the newest release is available @ [http://www.tgp.
 Description
 -----------
 
-[<img src="http://www.ludumdare.com/compo/wp-content/compo2/375043/10740-shot0.png" width="640" />](http://www.ludumdare.com/compo/wp-content/compo2/375043/10740-shot0.png)
+[<img src="http://www.ludumdare.com/compo/wp-content/compo2/375043/10740-shot0.png" width="320" />](http://www.ludumdare.com/compo/wp-content/compo2/375043/10740-shot0.png)
 
 The planets swirl over head and you can feel their power flow through you. Unleash your devastating Kung-Fu on those who would oppose you! 
 
