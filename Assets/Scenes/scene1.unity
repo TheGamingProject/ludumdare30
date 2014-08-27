@@ -160,8 +160,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 106547550}
-  - 131: {fileID: 106547549}
   - 114: {fileID: 106547551}
+  - 131: {fileID: 106547549}
   m_Layer: 0
   m_Name: ButtonAttack
   m_TagString: Untagged
@@ -182,8 +182,8 @@ GUITexture:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 120
-    height: 120
+    width: 100
+    height: 100
   m_LeftBorder: 0
   m_RightBorder: 0
   m_TopBorder: 0
@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106547548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .610000014, y: .0500000007, z: -1}
+  m_LocalPosition: {x: .620000005, y: .0500000007, z: 11}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 521036319}
