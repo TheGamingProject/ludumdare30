@@ -21,7 +21,7 @@ public class HashAudioScript : MonoBehaviour {
 	}
 	
 	public void PlayAudio(string soundName) {
-		Debug.Log("Trying to play: " + soundName);
+//		Debug.Log("Trying to play: " + soundName);
 		
 		if (hashMap.ContainsKey(soundName)) {
 			AudioSource sound = (AudioSource) hashMap[soundName];

@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   findEnemysTime: .100000001
   dmg: 2
-  damageDisapateRatio: .5
+  damageDisapateRatio: .699999988
   bouncesLeft: 3
   linkToSelf: {fileID: 400000}
 --- !u!114 &11400004

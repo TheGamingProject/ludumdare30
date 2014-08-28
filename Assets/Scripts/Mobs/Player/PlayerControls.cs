@@ -138,7 +138,7 @@ public class PlayerControls : MonoBehaviour {
 	void trySpecialAttack() {
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
-		//currentPlanet = PlanetsLol.planets.jupiter;
+		//currentPlanet = PlanetsLol.planets.jupiter; //UNCOMMENT THIS FOR 100% 1 PLANET
 
 		switch (currentPlanet) {
 		case PlanetsLol.planets.saturn:
