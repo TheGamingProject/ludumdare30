@@ -85,11 +85,7 @@ public class PlayerControls : MonoBehaviour {
 	void Update () {
 		updateMovement();
 
-		saturnCooldown.updateCooldown();
-		mercuryCooldown.updateCooldown();
-		neptuneCooldown.updateCooldown();
-		jupiterCooldown.updateCooldown();
-		marsCooldown.updateCooldown();
+		updatePlanetCooldowns();
 
 		if (Input.GetButtonDown("Fire1") && !isAttacking()) {
 			tryAttack1();
@@ -100,6 +96,14 @@ public class PlayerControls : MonoBehaviour {
 		}
 
 		updatePower1ing();
+	}
+
+	void updatePlanetCooldowns() {
+		saturnCooldown.updateCooldown();
+		mercuryCooldown.updateCooldown();
+		neptuneCooldown.updateCooldown();
+		jupiterCooldown.updateCooldown();
+		marsCooldown.updateCooldown();
 	}
 
 	// ATTACKING
@@ -134,42 +138,32 @@ public class PlayerControls : MonoBehaviour {
 	public void trySpecialAttack() {
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
+		//currentPlanet = PlanetsLol.planets.jupiter;
+
 		switch (currentPlanet) {
 		case PlanetsLol.planets.saturn:
-			if (saturnCooldown.isCooldownUp()) {
-				Debug.Log("saturn attack");
-				doSaturnAttack();
-				saturnCooldown.resetCooldown();
-			}
-			break;
+			trySpecialAttackHelper(currentPlanet, saturnCooldown, doSaturnAttack);
+			return;
 		case PlanetsLol.planets.mercury:
-			if (mercuryCooldown.isCooldownUp()) {
-				Debug.Log("mercury attack");
-				doMercuryAttack();
-				mercuryCooldown.resetCooldown();
-			}
-			break;
+			trySpecialAttackHelper(currentPlanet, mercuryCooldown, doMercuryAttack);
+			return;
 		case PlanetsLol.planets.neptune:
-			if (neptuneCooldown.isCooldownUp()) {
-				Debug.Log("neptune attack");
-				doNeptuneAttack();
-				neptuneCooldown.resetCooldown();
-			}
-			break;
+			trySpecialAttackHelper(currentPlanet, neptuneCooldown, doNeptuneAttack);
+			return;
 		case PlanetsLol.planets.jupiter:
-			if (jupiterCooldown.isCooldownUp()) {
-				Debug.Log("jupiter attack");
-				doJupiterAttack();
-				jupiterCooldown.resetCooldown();
-			}
-			break;
+			trySpecialAttackHelper(currentPlanet, jupiterCooldown, doJupiterAttack);
+			return;
 		case PlanetsLol.planets.mars:
-			if (marsCooldown.isCooldownUp()) {
-				Debug.Log("mars attack");
-				doMarsAttack();
-				marsCooldown.resetCooldown();
-			}
-			break;
+			trySpecialAttackHelper(currentPlanet, marsCooldown, doMarsAttack);
+			return;
+		}
+	}
+	public delegate void DoPlanetAttack();
+	void trySpecialAttackHelper(PlanetsLol.planets planet, Cooldown planetAttackCooldown, DoPlanetAttack doPlanetAttack) {
+		if (planetAttackCooldown.isCooldownUp()) {
+			Debug.Log(planet.ToString() + " attack");
+			doPlanetAttack();
+			planetAttackCooldown.resetCooldown();
 		}
 	}
 

@@ -286,7 +286,7 @@ MonoBehaviour:
   attackSound: KFX4
   deathSound: enemydeath
   recentlyShocked: 0
-  shockedTime: .25
+  shockedTime: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

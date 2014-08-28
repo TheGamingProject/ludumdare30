@@ -68,10 +68,6 @@ public class Enemy : MonoBehaviour {
 		updateFacing();
 
 		updateCooldown();
-		if  (isCooldownUp()) {
-	//		myMeshRenderer.material = defaultMaterial;
-			//resetCooldown();
-		}
 
 		shockedCooldown.updateCooldown();
 		updateShock();
