@@ -82,10 +82,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 27764342}
-  - 114: {fileID: 27764345}
   - 212: {fileID: 27764344}
   - 114: {fileID: 27764346}
   - 65: {fileID: 27764347}
+  - 114: {fileID: 27764343}
   m_Layer: 0
   m_Name: Button1Attack
   m_TagString: Untagged
@@ -105,6 +105,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 179372857}
   m_RootOrder: 1
+--- !u!114 &27764343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27764341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 438491968, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advancedProps: 0
+  combineTouches: 0
+  combineTouchesInterval: .300000012
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  ignoreChildren: 0
 --- !u!212 &27764344
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,26 +147,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 51c004f219b7e46d0af62d58d665bc03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &27764345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 27764341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 438491968, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advancedProps: 0
-  combineTouches: 0
-  combineTouchesInterval: .300000012
-  useSendMessage: 0
-  sendStateChangeMessages: 0
-  sendMessageTarget: {fileID: 0}
-  requireGestureToFail: {fileID: 0}
-  friendlyGestures: []
-  ignoreChildren: 0
 --- !u!114 &27764346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd173a0586912d24f845537cd2f6fa78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceRatio: .25
 --- !u!114 &1291238923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,7 +1637,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291238920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1423175855, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
+  m_Script: {fileID: 1423175855, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   advancedProps: 0
@@ -2117,10 +2116,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1831462486}
-  - 114: {fileID: 1831462490}
   - 212: {fileID: 1831462489}
   - 114: {fileID: 1831462488}
   - 65: {fileID: 1831462487}
+  - 114: {fileID: 1831462490}
   m_Layer: 0
   m_Name: Button2Attack
   m_TagString: Untagged
@@ -2193,7 +2192,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831462485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 438491968, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
+  m_Script: {fileID: 438491968, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   advancedProps: 0
@@ -2392,6 +2391,9 @@ GameObject:
   - 114: {fileID: 2001333039}
   - 114: {fileID: 2001333038}
   - 114: {fileID: 2001333040}
+  - 114: {fileID: 2001333043}
+  - 114: {fileID: 2001333042}
+  - 114: {fileID: 2001333041}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2502,7 +2504,6 @@ MonoBehaviour:
   m_Script: {fileID: -102971247, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisableOnMobilePlatforms: 1
 --- !u!114 &2001333039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,7 +2515,6 @@ MonoBehaviour:
   m_Script: {fileID: 770742126, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisableOnNonTouchPlatforms: 1
 --- !u!114 &2001333040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,6 +2524,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 923107734, guid: 20c2a163775f09b4cafa29b19d0c9204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2001333041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2001333033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -102971247, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisableOnMobilePlatforms: 1
+--- !u!114 &2001333042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2001333033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 770742126, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisableOnNonTouchPlatforms: 1
+--- !u!114 &2001333043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2001333033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 923107734, guid: d1f00bf23e10d42499ac5a5b0604b771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: f5c75ed8c6bed0f489d9003aa739aff7, type: 3}

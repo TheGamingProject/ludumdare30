@@ -1,6 +1,9 @@
 fileFormatVersion: 2
 guid: 6e56353573ae54ef189b3bf0f039d576
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemyFallJupiter_0
+    21300002: enemyFallJupiter_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
