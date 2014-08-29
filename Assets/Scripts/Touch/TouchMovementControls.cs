@@ -12,6 +12,11 @@ public class TouchMovementControls : MonoBehaviour {
 	private PlayerControls player;
 	
 	void Start() {
+		if (Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.Android) {
+			this.enabled = false;
+			GetComponent<SpriteRenderer>().enabled = false;
+		}
+
 		player = GameObject.Find("Player").GetComponent<PlayerControls>();
 	}
 	

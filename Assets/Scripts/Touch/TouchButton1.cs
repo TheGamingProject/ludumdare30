@@ -6,7 +6,14 @@ using Random = UnityEngine.Random;
 
 public class TouchButton1 : MonoBehaviour {
 	// https://github.com/InteractiveLab/TouchScript/wiki/Gestures
-	
+
+	void Start() {
+		if (Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.Android) {
+			this.enabled = false;
+			GetComponent<SpriteRenderer>().enabled = false;
+		}
+	}
+
 	private void OnEnable() {
 		GetComponent<ReleaseGesture>().Released += tapHandler;
 	}
