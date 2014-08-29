@@ -48,7 +48,7 @@ public class Lightning : MonoBehaviour {
 	
 	void onTrigger(Collider2D collider) {
 		Enemy enemy = collider.GetComponent<Enemy>();
-		if (isActive && enemy != null && !enemy.isDead() && !enemys.Contains(enemy)) {
+		if (isActive && enemy != null && !enemy.recentlyShocked && !enemy.isDead() && !enemys.Contains(enemy)) {
 			enemys.Add(enemy);
 		}
 	}
@@ -74,7 +74,6 @@ public class Lightning : MonoBehaviour {
 		Debug.Log("total enemys i could wat: " + enemys.Count);
 		for(int i=0;i<enemys.Count;i++) {
 			if(total >= bouncesLeft) break; 
-			if (enemys[i].isDead() || enemys[i].recentlyShocked) continue;
 			
 			Debug.Log("zapped- #" + total);
 			zap(enemys[i]);
@@ -91,6 +90,7 @@ public class Lightning : MonoBehaviour {
 		Debug.Log("about to try to zap");
 		Debug.Log(" DMG: " + (nextDmg));
 		Debug.Log(" Bounces left: " + bouncesLeft);
+
 		if (bouncesLeft <= 0) return;
 
 		Transform lightning = Instantiate(linkToSelf) as Transform;
@@ -101,15 +101,19 @@ public class Lightning : MonoBehaviour {
 		lightningScript.dmg = nextDmg;
 		lightning.parent = middleGround;
 		lightning.position = new Vector3(e.transform.position.x, e.transform.position.y, lightning.parent.position.z);
-		LineRenderer line = lightning.transform.FindChild("line").GetComponent<LineRenderer>();
-		line.enabled = true;
-		line.SetPosition(0, transform.position);
-		line.SetPosition(1, e.transform.position);
-		lightningScript.init();
+		initLightningLine(lightningScript, e.transform.position);
 
 		GetComponent<HashAudioScript>().PlayAudio("jupiter");
 		lightningScript.strike(e);
 		Debug.Log("STRUCK BROOO");
+	}
+
+	void initLightningLine(Lightning lightningScript, Vector3 toPosition) {
+		LineRenderer line = lightningScript.transform.FindChild("line").GetComponent<LineRenderer>();
+		line.enabled = true;
+		line.SetPosition(0, transform.position);
+		line.SetPosition(1, toPosition);
+		lightningScript.init();
 	}
 
 	void resetFind() {

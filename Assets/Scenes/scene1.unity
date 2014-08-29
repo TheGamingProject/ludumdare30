@@ -2085,5 +2085,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 2
-  enemysFirstHit: 6
+  enemysFirstHit: 4
   lightningPrefab: {fileID: 400000, guid: 9e24f9236357ce54a9671875eacc72fc, type: 2}
