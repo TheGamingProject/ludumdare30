@@ -107,7 +107,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	// ATTACKING
-	public bool isAttacking() {
+	bool isAttacking() {
 		return basicAttackHitbox.isActive() || saturnAttack.isActive() || power1ing;
 	}
 
@@ -138,7 +138,7 @@ public class PlayerControls : MonoBehaviour {
 	public void trySpecialAttack() {
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
-		//currentPlanet = PlanetsLol.planets.jupiter;
+		//currentPlanet = PlanetsLol.planets.jupiter; //UNCOMMENT THIS FOR 100% 1 PLANET
 
 		switch (currentPlanet) {
 		case PlanetsLol.planets.saturn:
@@ -234,7 +234,7 @@ public class PlayerControls : MonoBehaviour {
 		animationController.SetBool("power1ing", true);
 	}
 
-	public void updatePower1ing() {
+	void updatePower1ing() {
 		power1ingCooldown.updateCooldown();
 		if (power1ing && power1ingCooldown.isCooldownUp()) {
 			power1ing = false;

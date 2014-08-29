@@ -140,17 +140,24 @@ public class Enemy : MonoBehaviour {
 	public void getHit(Transform fromWhom, int dmg) {
 		if (isInvunUp()) return;
 
-		health -= dmg;
-		if (health <= 0) {
-			die();
+		if (!takeDamage(dmg)) {
+			startFalling(fromWhom, dmg);
 		}
-		
-		startFalling(fromWhom, dmg);
 
 		//Debug.Log("got hit" + health);
 
 	//	myMeshRenderer.material = getHitMaterial;
 		resetCooldown();
+	}
+
+	// returns if the enemy dies
+	private bool takeDamage(int dmg) {
+		health -= dmg;
+		if (health <= 0) {
+			die();
+			return true;
+		}
+		return false;
 	}
 
 	bool isCooldownUp () {
@@ -173,9 +180,11 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void shock () {
+	public void shock (int dmg) {
 		recentlyShocked = true;
 		shockedCooldown.resetCooldown();
+		animationController.Play("enemyFallJupiter");
+		takeDamage(dmg);
 	}
 
 	protected void die () {
