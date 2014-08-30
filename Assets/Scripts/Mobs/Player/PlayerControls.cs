@@ -111,7 +111,7 @@ public class PlayerControls : MonoBehaviour {
 		return basicAttackHitbox.isActive() || saturnAttack.isActive() || power1ing;
 	}
 
-	void tryAttack1() {
+	public void tryAttack1() {
 		basicAttackHitbox.activate();
 		int r = Random.Range(0, 2);
 		if (r == 0) {
@@ -135,7 +135,7 @@ public class PlayerControls : MonoBehaviour {
 		rigidbody2D.AddRelativeForce(position, ForceMode2D.Impulse);
 	}
 
-	void trySpecialAttack() {
+	public void trySpecialAttack() {
 		PlanetsLol.planets currentPlanet = planetMaster.getCurrentPlanet();
 
 		//currentPlanet = PlanetsLol.planets.jupiter; //UNCOMMENT THIS FOR 100% 1 PLANET

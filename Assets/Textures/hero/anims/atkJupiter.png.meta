@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 40fca85ec9669463ab362cc2de07d48b
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: atkJupiter_0
+    21300002: atkJupiter_1
+    21300004: atkJupiter_2
+    21300006: atkJupiter_3
+    21300008: atkJupiter_4
+    21300010: atkJupiter_5
+    21300012: atkJupiter_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

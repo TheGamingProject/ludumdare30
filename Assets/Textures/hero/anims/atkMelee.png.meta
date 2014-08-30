@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 27fa2072f34044053bf5d696c3f09b3a
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: atkMelee_0
+    21300002: atkMelee_1
+    21300004: atkMelee_2
+    21300006: atkMelee_3
+    21300008: atkMelee_4
+    21300010: atkMelee_5
+    21300012: atkMelee_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
