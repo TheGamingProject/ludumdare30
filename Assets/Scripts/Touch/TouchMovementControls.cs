@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class TouchMovementControls : MonoBehaviour {
 	// https://github.com/InteractiveLab/TouchScript/wiki/Gestures
 	
-	public float forceRatio = .5f;
+	public float forceRatio = .15f;
 	
 	private PlayerControls player;
 	
